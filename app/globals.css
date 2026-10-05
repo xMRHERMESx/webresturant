@@ -20,16 +20,9 @@
     color: #F4F1ED;
   }
 
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #F4F1ED;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #A84535;
-    border-radius: 9999px;
-  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #A84535; border-radius: 9999px; }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif), Georgia, serif;
@@ -39,6 +32,9 @@
     outline: 2px solid #A84535;
     outline-offset: 4px;
   }
+
+  body[data-cursor="custom"] { cursor: none; }
+  body[data-cursor="custom"] * { cursor: none !important; }
 }
 
 @layer utilities {
@@ -47,23 +43,42 @@
   .organic-3 { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; }
   .organic-4 { border-radius: 42% 58% 42% 58% / 55% 60% 40% 45%; }
   .organic-5 { border-radius: 48% 52% 52% 48% / 42% 58% 42% 58%; }
+  .organic-6 { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  .organic-7 { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  .organic-8 { border-radius: 50% 50% 30% 70% / 50% 50% 70% 30%; }
+  .organic-window { border-radius: 50% 50% 4% 4% / 60% 60% 4% 4%; }
 
-  .text-balance {
-    text-wrap: balance;
+  .text-balance { text-wrap: balance; }
+
+  .text-gradient-warm {
+    background: linear-gradient(135deg, #A84535, #D2691E);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  .grain-overlay {
-    position: relative;
-  }
+  .grain-overlay { position: relative; }
   .grain-overlay::after {
     content: '';
     position: absolute;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    opacity: 0.06;
+    opacity: 0.04;
     pointer-events: none;
     mix-blend-mode: multiply;
   }
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.2s ease, height 0.2s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

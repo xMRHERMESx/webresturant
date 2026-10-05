@@ -12,22 +12,24 @@ export default function Reservation() {
   const guestOptions = ['1 Person', '2 People', '3 People', '4 People', '5 People', '6+ People']
 
   return (
-    <section id="reservation" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="reservation" className="relative py-32 lg:py-40 overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-terracotta/8 organic-1 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-terracotta/6 organic-1 blur-3xl" />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-xs uppercase tracking-[0.25em] text-terracotta mb-4"
+            className="flex items-center justify-center gap-3 mb-6"
           >
-            Reservations
-          </motion.p>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-charcoal/30 font-sans">07 / 07</span>
+            <span className="w-8 h-px bg-charcoal/15" />
+            <span className="text-[10px] uppercase tracking-[0.3em] text-terracotta font-sans">Reservations</span>
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +44,7 @@ export default function Reservation() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-serif text-xl text-charcoal/60"
+            className="font-serif text-xl text-charcoal/50"
           >
             Book your table and become part of the story.
           </motion.p>
@@ -53,48 +55,50 @@ export default function Reservation() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="max-w-4xl mx-auto bg-charcoal/95 backdrop-blur-md rounded-2xl p-6 lg:p-8 shadow-2xl"
+          className="max-w-4xl mx-auto"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-end">
-            <div>
-              <label className="text-[10px] uppercase tracking-[0.2em] text-cream/50 mb-2 block">Date</label>
+          <div className="grid grid-cols-1 lg:grid-cols-4 border-t border-b border-charcoal/10">
+            <div className="px-6 py-6 lg:border-r border-charcoal/10">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-charcoal/40 mb-3 block">Date</label>
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full bg-transparent border-b border-cream/20 text-cream font-serif text-lg py-2 focus:outline-none focus:border-warm-orange transition-colors [color-scheme:dark]"
+                className="w-full bg-transparent text-charcoal font-serif text-xl py-1 focus:outline-none transition-colors [color-scheme:light]"
               />
             </div>
-            <div>
-              <label className="text-[10px] uppercase tracking-[0.2em] text-cream/50 mb-2 block">Time</label>
+            <div className="px-6 py-6 lg:border-r border-charcoal/10">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-charcoal/40 mb-3 block">Time</label>
               <select
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                className="w-full bg-transparent border-b border-cream/20 text-cream font-serif text-lg py-2 focus:outline-none focus:border-warm-orange transition-colors cursor-pointer [color-scheme:dark]"
+                className="w-full bg-transparent text-charcoal font-serif text-xl py-1 focus:outline-none cursor-pointer transition-colors [color-scheme:light]"
               >
-                <option value="" className="bg-charcoal">Select time</option>
+                <option value="">Select time</option>
                 {times.map((t) => (
-                  <option key={t} value={t} className="bg-charcoal">{t}</option>
+                  <option key={t} value={t}>{t}</option>
                 ))}
               </select>
             </div>
-            <div>
-              <label className="text-[10px] uppercase tracking-[0.2em] text-cream/50 mb-2 block">Guests</label>
+            <div className="px-6 py-6 lg:border-r border-charcoal/10">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-charcoal/40 mb-3 block">Guests</label>
               <select
                 value={guests}
                 onChange={(e) => setGuests(e.target.value)}
-                className="w-full bg-transparent border-b border-cream/20 text-cream font-serif text-lg py-2 focus:outline-none focus:border-warm-orange transition-colors cursor-pointer [color-scheme:dark]"
+                className="w-full bg-transparent text-charcoal font-serif text-xl py-1 focus:outline-none cursor-pointer transition-colors [color-scheme:light]"
               >
-                <option value="" className="bg-charcoal">Select guests</option>
+                <option value="">Select guests</option>
                 {guestOptions.map((g) => (
-                  <option key={g} value={g} className="bg-charcoal">{g}</option>
+                  <option key={g} value={g}>{g}</option>
                 ))}
               </select>
             </div>
-            <button className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-terracotta text-cream text-xs uppercase tracking-[0.15em] hover:bg-warm-orange transition-colors duration-300">
-              Reserve a Table
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
+            <div className="flex items-center px-6 py-6">
+              <button className="group inline-flex items-center justify-center gap-2 w-full py-4 bg-charcoal text-cream text-[11px] uppercase tracking-[0.2em] hover:bg-terracotta transition-colors duration-500">
+                Reserve a Table
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

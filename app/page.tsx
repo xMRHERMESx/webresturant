@@ -9,10 +9,12 @@ import Locations from '@/components/Locations'
 import PrivateDining from '@/components/PrivateDining'
 import Reservation from '@/components/Reservation'
 import Footer from '@/components/Footer'
+import CustomCursor from '@/components/CustomCursor'
 
 export default function Home() {
   return (
     <>
+      <CustomCursor />
       <Navigation />
       <main>
         <Hero />

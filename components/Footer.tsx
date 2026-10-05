@@ -19,19 +19,25 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="relative bg-espresso text-cream overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-24">
-        <div className="grid lg:grid-cols-12 gap-12 mb-16">
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-cream to-transparent z-10 pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-20 lg:py-28">
+        <p className="font-serif italic text-cream/25 text-2xl mb-20 lg:mb-28">
+          Good pizza creates a brighter world.
+        </p>
+
+        <div className="grid lg:grid-cols-12 gap-12 mb-20">
           <div className="lg:col-span-4">
             <h3 className="font-serif text-3xl font-medium mb-4">Lumiere</h3>
-            <p className="text-xs uppercase tracking-[0.25em] text-cream/40 mb-6">Pizza • Fire • Company</p>
-            <p className="font-serif italic text-cream/50 text-lg">Good pizza creates a brighter world.</p>
+            <p className="text-[10px] uppercase tracking-[0.25em] text-cream/30 mb-6">Pizza · Fire · Company</p>
           </div>
 
           <div className="lg:col-span-3">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-cream/40 mb-4">Explore</p>
-            <nav className="flex flex-col gap-2">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-cream/30 mb-4">Explore</p>
+            <nav className="flex flex-col gap-2.5">
               {navLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-sm text-cream/70 hover:text-warm-orange transition-colors">
+                <a key={link.label} href={link.href} className="group inline-flex items-center gap-2 text-sm text-cream/60 hover:text-warm-orange transition-colors">
+                  <span className="w-0 h-px bg-warm-orange transition-all duration-300 group-hover:w-4" />
                   {link.label}
                 </a>
               ))}
@@ -39,50 +45,50 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-5">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-cream/40 mb-4">Stories from our table.</p>
-            <form onSubmit={handleSubmit} className="flex items-center gap-2 mb-4">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-cream/30 mb-4">Stories from our table.</p>
+            <form onSubmit={handleSubmit} className="flex items-center gap-2 mb-4 border-b border-cream/15 pb-2">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email"
                 required
-                className="flex-1 bg-transparent border-b border-cream/20 text-cream py-2 focus:outline-none focus:border-warm-orange transition-colors placeholder:text-cream/30"
+                className="flex-1 bg-transparent text-cream py-1 focus:outline-none transition-colors placeholder:text-cream/25"
               />
-              <button type="submit" className="group inline-flex items-center gap-1 text-xs uppercase tracking-[0.15em] text-cream hover:text-warm-orange transition-colors">
+              <button type="submit" className="group inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.2em] text-cream/60 hover:text-warm-orange transition-colors">
                 Subscribe
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </button>
             </form>
             {subscribed && <p className="text-xs text-warm-orange">Thank you for subscribing!</p>}
 
-            <div className="flex items-center gap-4 mt-6">
-              <a href="#" aria-label="Instagram" className="text-cream/50 hover:text-warm-orange transition-colors">
+            <div className="flex items-center gap-5 mt-6">
+              <a href="#" aria-label="Instagram" className="text-cream/40 hover:text-warm-orange transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" aria-label="Facebook" className="text-cream/50 hover:text-warm-orange transition-colors">
+              <a href="#" aria-label="Facebook" className="text-cream/40 hover:text-warm-orange transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" aria-label="TikTok" className="text-cream/50 hover:text-warm-orange transition-colors text-sm font-medium">
+              <a href="#" aria-label="TikTok" className="text-cream/40 hover:text-warm-orange transition-colors text-sm font-medium">
                 TikTok
               </a>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-8 border-t border-cream/10">
-          <p className="text-xs text-cream/40">© {new Date().getFullYear()} Lumiere. All rights reserved.</p>
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 pt-8 border-t border-cream/8">
+          <p className="text-xs text-cream/30">© {new Date().getFullYear()} Lumiere. All rights reserved.</p>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setLang('EN')}
-              className={`text-xs uppercase tracking-[0.15em] transition-colors ${lang === 'EN' ? 'text-cream' : 'text-cream/30'}`}
+              className={`text-xs uppercase tracking-[0.15em] transition-colors ${lang === 'EN' ? 'text-cream' : 'text-cream/25'}`}
             >
               EN
             </button>
-            <span className="text-cream/20">/</span>
+            <span className="text-cream/15">/</span>
             <button
               onClick={() => setLang('PL')}
-              className={`text-xs uppercase tracking-[0.15em] transition-colors ${lang === 'PL' ? 'text-cream' : 'text-cream/30'}`}
+              className={`text-xs uppercase tracking-[0.15em] transition-colors ${lang === 'PL' ? 'text-cream' : 'text-cream/25'}`}
             >
               PL
             </button>
