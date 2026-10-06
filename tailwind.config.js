@@ -20,9 +20,9 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'hero': ['clamp(3rem, 8vw, 7.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
-        'display': ['clamp(2.5rem, 5vw, 4.5rem)', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
-        'subhead': ['clamp(1.75rem, 3vw, 2.5rem)', { lineHeight: '1.2' }],
+        'hero': ['clamp(2.75rem, 7.5vw, 7rem)', { lineHeight: '1.02', letterSpacing: '-0.025em' }],
+        'display': ['clamp(2.25rem, 4.5vw, 4rem)', { lineHeight: '1.08', letterSpacing: '-0.015em' }],
+        'subhead': ['clamp(1.5rem, 2.5vw, 2.25rem)', { lineHeight: '1.15' }],
       },
       animation: {
         'fade-up': 'fadeUp 0.7s ease-out forwards',

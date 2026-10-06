@@ -15,7 +15,6 @@ const columns = [
   },
 ]
 
-// TikTok icon (not in lucide-react by default)
 function TikTokIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -26,34 +25,41 @@ function TikTokIcon({ className }: { className?: string }) {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#070706] section-padding pt-24 pb-10">
+    <footer className="relative overflow-hidden bg-[#070706] section-padding pt-32 pb-10">
       {/* Oversized background text */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-        <p className="font-serif text-[18vw] font-light text-cream/[0.03] whitespace-nowrap select-none leading-none">
+        <p className="font-serif text-[15vw] font-light text-cream/[0.025] whitespace-nowrap select-none leading-none tracking-tight">
           GOOD FOOD / GOOD MOMENTS
         </p>
       </div>
 
       <div className="relative z-10 container-lux">
-        {/* Top — logo + statement */}
-        <div className="text-center pb-16 border-b border-border">
-          <h2 className="font-serif text-5xl md:text-6xl text-cream">
-            Noir<span className="text-accent">.</span> Epicurean
+        {/* Top — large logo + statement */}
+        <div className="text-center pb-20">
+          <h2 className="font-serif text-6xl md:text-7xl lg:text-8xl font-light text-cream tracking-tight">
+            Noir<span className="text-accent">.</span>
           </h2>
-          <p className="mt-5 font-serif text-xl text-secondary-text italic">
-            Thoughtful food. Beautiful moments. Memories worth keeping.
+          <p className="mt-6 font-serif text-xl md:text-2xl font-light text-secondary-text italic max-w-md mx-auto leading-relaxed">
+            Thoughtful food.
+            <br />
+            Beautiful moments.
+            <br />
+            Memories worth keeping.
           </p>
         </div>
 
+        {/* Divider */}
+        <div className="divider" />
+
         {/* Columns */}
-        <div className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-4">
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-5">{col.title}</h3>
-              <ul className="space-y-3">
+              <h3 className="text-[0.65rem] font-medium uppercase tracking-[0.3em] text-accent mb-6">{col.title}</h3>
+              <ul className="space-y-3.5">
                 {col.links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-sm text-secondary-text transition-colors hover:text-cream">
+                    <a href="#" className="text-sm text-secondary-text transition-colors duration-300 hover:text-cream">
                       {link}
                     </a>
                   </li>
@@ -64,25 +70,28 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-accent mb-5">Follow</h3>
-            <div className="flex gap-4">
-              <a href="#" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-secondary-text transition-all hover:border-accent hover:text-accent">
-                <Instagram className="h-5 w-5" />
+            <h3 className="text-[0.65rem] font-medium uppercase tracking-[0.3em] text-accent mb-6">Follow</h3>
+            <div className="flex gap-3">
+              <a href="#" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-[2px] border border-[rgba(255,255,255,0.08)] text-secondary-text transition-all duration-300 hover:border-accent/50 hover:text-accent">
+                <Instagram className="h-4 w-4" />
               </a>
-              <a href="#" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-secondary-text transition-all hover:border-accent hover:text-accent">
-                <Facebook className="h-5 w-5" />
+              <a href="#" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-[2px] border border-[rgba(255,255,255,0.08)] text-secondary-text transition-all duration-300 hover:border-accent/50 hover:text-accent">
+                <Facebook className="h-4 w-4" />
               </a>
-              <a href="#" aria-label="TikTok" className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-secondary-text transition-all hover:border-accent hover:text-accent">
-                <TikTokIcon className="h-5 w-5" />
+              <a href="#" aria-label="TikTok" className="flex h-10 w-10 items-center justify-center rounded-[2px] border border-[rgba(255,255,255,0.08)] text-secondary-text transition-all duration-300 hover:border-accent/50 hover:text-accent">
+                <TikTokIcon className="h-4 w-4" />
               </a>
             </div>
           </div>
         </div>
 
+        {/* Divider */}
+        <div className="divider" />
+
         {/* Bottom bar */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[0.7rem] text-muted">
           <p>© 2026 Noir Epicurean. All Rights Reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex gap-8">
             <a href="#" className="transition-colors hover:text-cream">Privacy Policy</a>
             <a href="#" className="transition-colors hover:text-cream">Terms &amp; Conditions</a>
           </div>

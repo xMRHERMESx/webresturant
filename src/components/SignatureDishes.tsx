@@ -6,7 +6,7 @@ export default function SignatureDishes() {
   const { ref, visible } = useScrollReveal()
 
   return (
-    <section className="section-padding py-24 md:py-32 lg:py-40">
+    <section className="section-padding py-28 md:py-36 lg:py-44">
       <div ref={ref} className={`container-lux ${visible ? 'reveal visible' : 'reveal'}`}>
         <SectionHeader
           eyebrow="From Our Kitchen"
@@ -14,37 +14,36 @@ export default function SignatureDishes() {
           description="A selection of dishes that define our kitchen."
         />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {dishes.map((dish, i) => (
             <article
               key={dish.name}
-              className="group relative overflow-hidden rounded-lg bg-card border border-border transition-all duration-500 hover:-translate-y-1.5 hover:border-accent/30"
-              style={{ transitionDelay: `${i * 50}ms` }}
+              className="group cursor-pointer"
             >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
+              {/* Image — no card frame, image-first */}
+              <div className="relative h-80 overflow-hidden rounded-[2px]">
                 <img
                   src={dish.image}
                   alt={dish.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-                {/* Category badge */}
-                <span className="absolute top-4 left-4 text-xs uppercase tracking-wider text-cream/80 bg-ebony/60 backdrop-blur-sm px-3 py-1 rounded-full border border-border">
-                  {dish.category}
+                <div className="absolute inset-0 bg-gradient-to-t from-ebony/90 via-ebony/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
+                {/* Price reveal on hover — large editorial serif behind */}
+                <span className="absolute bottom-4 right-4 font-serif text-3xl font-light text-gilded opacity-0 translate-y-2 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                  {dish.price}
                 </span>
               </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="font-serif text-xl text-cream">{dish.name}</h3>
-                <p className="mt-2 text-sm text-muted leading-relaxed">{dish.description}</p>
-                <div className="mt-5 flex items-center justify-between">
-                  <span className="font-serif text-2xl text-gilded">{dish.price}</span>
-                  {/* Accent line on hover */}
-                  <span className="h-px w-0 bg-accent transition-all duration-500 group-hover:w-16" />
-                </div>
+              {/* Content — below image, minimal */}
+              <div className="mt-5">
+                <p className="text-[0.65rem] uppercase tracking-[0.25em] text-muted mb-2">{dish.category}</p>
+                <h3 className="font-serif text-xl font-normal text-cream transition-colors duration-300 group-hover:text-gilded">
+                  {dish.name}
+                </h3>
+                <p className="mt-1.5 text-sm text-muted leading-relaxed">{dish.description}</p>
+                {/* Accent line on hover */}
+                <span className="mt-4 block h-px w-0 bg-accent/50 transition-all duration-500 ease-out group-hover:w-12" />
               </div>
             </article>
           ))}

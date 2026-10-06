@@ -31,7 +31,7 @@ export default function Button({
     <>
       {children}
       {withArrow && (
-        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
       )}
     </>
   )

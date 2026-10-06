@@ -12,45 +12,49 @@ export default function ReservationForm() {
   }
 
   return (
-    <section id="reservation" className="bg-obsidian section-padding py-24 md:py-32 lg:py-40">
+    <section id="reservation" className="bg-obsidian section-padding py-28 md:py-36 lg:py-44">
       <div ref={ref} className={`container-lux max-w-3xl mx-auto ${visible ? 'reveal visible' : 'reveal'}`}>
-        <div className="text-center mb-12">
-          <p className="eyebrow mb-5">Book Your Evening</p>
-          <h2 className="font-serif text-display text-cream">Make a Reservation</h2>
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="h-px w-6 bg-accent/40" />
+            <p className="eyebrow-accent">Book Your Evening</p>
+            <span className="h-px w-6 bg-accent/40" />
+          </div>
+          <h2 className="font-serif font-light text-display text-cream">Make a Reservation</h2>
         </div>
 
         {submitted ? (
-          <div className="text-center py-16">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-accent text-accent">
-              <Check className="h-8 w-8" />
+          <div className="text-center py-20">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-accent/40 text-accent">
+              <Check className="h-7 w-7" strokeWidth={1.5} />
             </div>
-            <h3 className="mt-6 font-serif text-2xl text-cream">Reservation Received</h3>
-            <p className="mt-3 text-secondary-text">
+            <h3 className="mt-8 font-serif text-2xl font-light text-cream">Reservation Received</h3>
+            <p className="mt-4 text-secondary-text text-sm max-w-sm mx-auto">
               We will confirm your booking by email shortly. We look forward to welcoming you.
             </p>
-            <button onClick={() => setSubmitted(false)} className="btn-ghost mt-8">
+            <button onClick={() => setSubmitted(false)} className="btn-ghost mt-10">
               Make Another Reservation
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="grid gap-8 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="space-y-10">
+            <div className="grid gap-10 sm:grid-cols-2">
               <div>
-                <label htmlFor="name" className="block text-xs uppercase tracking-wider text-muted mb-2">Full Name</label>
+                <label htmlFor="name" className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted mb-3">Full Name</label>
                 <input id="name" type="text" required className="input-lux" placeholder="Your name" />
               </div>
               <div>
-                <label htmlFor="email" className="block text-xs uppercase tracking-wider text-muted mb-2">Email</label>
+                <label htmlFor="email" className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted mb-3">Email</label>
                 <input id="email" type="email" required className="input-lux" placeholder="you@email.com" />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-xs uppercase tracking-wider text-muted mb-2">Phone</label>
+                <label htmlFor="phone" className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted mb-3">Phone</label>
                 <input id="phone" type="tel" required className="input-lux" placeholder="+98 21 000 0000" />
               </div>
               <div>
-                <label htmlFor="guests" className="block text-xs uppercase tracking-wider text-muted mb-2">Guests</label>
+                <label htmlFor="guests" className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted mb-3">Guests</label>
                 <div className="relative">
-                  <Users className="absolute right-0 top-3 h-5 w-5 text-muted pointer-events-none" />
+                  <Users className="absolute right-0 top-3.5 h-4 w-4 text-muted pointer-events-none" />
                   <select id="guests" required className="input-lux appearance-none pr-7 cursor-pointer">
                     {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                       <option key={n} value={n} className="bg-obsidian text-cream">{n} {n === 1 ? 'Guest' : 'Guests'}</option>
@@ -60,16 +64,16 @@ export default function ReservationForm() {
                 </div>
               </div>
               <div>
-                <label htmlFor="date" className="block text-xs uppercase tracking-wider text-muted mb-2">Date</label>
+                <label htmlFor="date" className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted mb-3">Date</label>
                 <div className="relative">
-                  <Calendar className="absolute right-0 top-3 h-5 w-5 text-muted pointer-events-none" />
+                  <Calendar className="absolute right-0 top-3.5 h-4 w-4 text-muted pointer-events-none" />
                   <input id="date" type="date" required className="input-lux pr-7" />
                 </div>
               </div>
               <div>
-                <label htmlFor="time" className="block text-xs uppercase tracking-wider text-muted mb-2">Time</label>
+                <label htmlFor="time" className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted mb-3">Time</label>
                 <div className="relative">
-                  <Clock className="absolute right-0 top-3 h-5 w-5 text-muted pointer-events-none" />
+                  <Clock className="absolute right-0 top-3.5 h-4 w-4 text-muted pointer-events-none" />
                   <select id="time" required className="input-lux appearance-none pr-7 cursor-pointer">
                     {['12:00', '12:30', '13:00', '13:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00'].map((t) => (
                       <option key={t} value={t} className="bg-obsidian text-cream">{t}</option>
@@ -80,7 +84,7 @@ export default function ReservationForm() {
             </div>
 
             <div>
-              <label htmlFor="request" className="block text-xs uppercase tracking-wider text-muted mb-2">Special Request</label>
+              <label htmlFor="request" className="block text-[0.65rem] uppercase tracking-[0.25em] text-muted mb-3">Special Request</label>
               <textarea id="request" rows={3} className="input-lux resize-none" placeholder="Dietary needs, occasion, seating preference..." />
             </div>
 

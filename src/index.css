@@ -4,7 +4,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: rgba(255, 255, 255, 0.06);
   }
 
   html {
@@ -15,30 +15,29 @@
 
   body {
     @apply bg-ebony text-cream font-sans;
-    font-size: 1.0625rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.7;
     overflow-x: hidden;
+    letter-spacing: 0.01em;
   }
 
   ::selection {
-    @apply bg-accent/30 text-cream;
+    @apply bg-accent/25 text-cream;
   }
 
   :focus-visible {
-    outline: 2px solid #E8B56B;
-    outline-offset: 4px;
+    outline: 1px solid #E8B56B;
+    outline-offset: 3px;
   }
 
-  /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
     background: #0A0A09;
   }
   ::-webkit-scrollbar-thumb {
-    background: #2a2825;
-    border-radius: 4px;
+    background: #1f1d1a;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #D98B3A;
@@ -47,7 +46,11 @@
 
 @layer components {
   .eyebrow {
-    @apply text-xs font-sans uppercase tracking-[0.25em] text-accent;
+    @apply text-[0.7rem] font-sans uppercase tracking-[0.3em] text-muted;
+  }
+
+  .eyebrow-accent {
+    @apply text-[0.7rem] font-sans uppercase tracking-[0.3em] text-accent;
   }
 
   .section-padding {
@@ -59,32 +62,33 @@
   }
 
   .divider {
-    @apply h-px w-full bg-border;
+    @apply h-px w-full;
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-medium uppercase tracking-wider text-ebony transition-all duration-300 hover:bg-gilded hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-[3px] bg-accent px-8 py-4 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-ebony transition-all duration-300 ease-out hover:bg-gilded hover:translate-y-[-2px] active:translate-y-0;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-border bg-transparent px-7 py-3.5 text-sm font-medium uppercase tracking-wider text-cream transition-all duration-300 hover:border-accent hover:text-accent hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center gap-2 rounded-[3px] border border-[rgba(255,255,255,0.12)] bg-transparent px-8 py-4 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-cream transition-all duration-300 ease-out hover:border-accent/50 hover:text-accent hover:translate-y-[-2px];
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-cream transition-colors duration-300 hover:text-accent;
+    @apply inline-flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:text-accent;
   }
 
   .input-lux {
-    @apply w-full bg-transparent border-b border-border py-3 text-cream placeholder:text-muted focus:border-accent focus:outline-none transition-colors duration-300;
+    @apply w-full bg-transparent border-b border-[rgba(255,255,255,0.08)] py-3.5 text-cream placeholder:text-muted focus:border-accent focus:outline-none transition-colors duration-300 text-base;
   }
 
   .nav-link {
-    @apply relative text-sm font-medium tracking-wide text-secondary-text transition-colors duration-300 hover:text-cream;
+    @apply relative text-[0.8rem] font-normal tracking-wide text-secondary-text transition-colors duration-300 hover:text-cream;
   }
 
   .nav-link::after {
     content: '';
-    @apply absolute -bottom-1.5 left-0 h-px w-0 bg-accent transition-all duration-300;
+    @apply absolute -bottom-1.5 left-0 h-px w-0 bg-accent transition-all duration-300 ease-out;
   }
 
   .nav-link:hover::after,
@@ -100,13 +104,24 @@
 
   .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .reveal-img {
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 1s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-img.visible {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .grain {
@@ -118,7 +133,7 @@
     position: absolute;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    opacity: 0.025;
     pointer-events: none;
     mix-blend-mode: overlay;
   }
@@ -132,7 +147,8 @@
     scroll-behavior: auto !important;
   }
 
-  .reveal {
+  .reveal,
+  .reveal-img {
     opacity: 1;
     transform: none;
   }
