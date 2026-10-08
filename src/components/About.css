@@ -1,0 +1,46 @@
+.about {
+  background: var(--ivory);
+  text-align: center;
+}
+
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-eyebrow {
+  margin-bottom: 18px;
+}
+
+.about-title {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  color: var(--forest);
+  font-weight: 500;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 28px 0;
+  width: 100%;
+}
+.divider-line {
+  height: 1px;
+  width: 70px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.about-body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.85;
+  color: var(--charcoal);
+  max-width: 620px;
+}

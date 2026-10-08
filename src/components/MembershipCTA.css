@@ -1,0 +1,45 @@
+.mcta {
+  background: var(--forest);
+  color: var(--cream);
+  text-align: center;
+}
+
+.mcta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mcta-eyebrow {
+  color: var(--gold-light);
+  margin-bottom: 18px;
+}
+
+.mcta-title {
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  color: var(--cream);
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.mcta-desc {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: rgba(244, 240, 230, 0.82);
+  margin-bottom: 40px;
+  max-width: 560px;
+}
+
+.mcta-actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 479px) {
+  .mcta-actions { flex-direction: column; width: 100%; }
+  .mcta-actions .btn { width: 100%; }
+}
