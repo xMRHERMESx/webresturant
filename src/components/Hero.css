@@ -7,11 +7,14 @@
    played; only its current frame is seeked (see useScrollScrubVideo).
 
    Single tuning knob: --hero-scrub (mobile override at the bottom of the file).
-   With --hero-scrub: 280vh the timeline is 10.08s over ~2.8 viewports of scroll.
+   With --hero-scrub: 640vh the timeline is 10.08s over ~6.4 viewports of scroll,
+   i.e. ~1.97ms of film per pixel of scroll — a wheel notch of ~100px advances
+   about 0.20s (5 frames). Raise this one value to slow the camera further; the
+   track height below is derived from it, so the pin stays correct either way.
    --------------------------------------------------------------------------- */
 
 .hero-track {
-  --hero-scrub: 280vh;
+  --hero-scrub: 640vh;
   position: relative;
   /* vh first; svh where supported so mobile browser chrome can't resize the pin */
   height: calc(100vh + var(--hero-scrub));
@@ -223,10 +226,10 @@
   .hero-loading-bar::after { animation: none; transform: none; }
 }
 
-/* Mobile: a shorter scrub keeps touch scrolling natural while still showing the
-   whole sequence. */
+/* Mobile: the same slowdown, scaled down proportionally so one touch flick still
+   covers ground while the whole sequence stays comfortably reachable. */
 @media (max-width: 767px) {
-  .hero-track { --hero-scrub: 190vh; }
+  .hero-track { --hero-scrub: 440vh; }
   .hero-track.is-static {
     height: 80vh;
     min-height: 480px;

@@ -34,8 +34,8 @@ docker compose -f docker-compose.base44.yml up -d --build
 - `SmartImage` component provides a gradient fallback if any image fails to load
 
 ## Hero film (scroll-scrubbed video)
-- `src/components/Hero.jsx` renders a scroll track (`--hero-scrub`, default 280vh,
-  190vh under 767px) wrapping a `position: sticky` viewport that holds the film.
+- `src/components/Hero.jsx` renders a scroll track (`--hero-scrub`, default 640vh,
+  440vh under 767px) wrapping a `position: sticky` viewport that holds the film.
   Scroll position alone drives `video.currentTime`; the film is never played.
 - `src/hooks/useScrollScrubVideo.js` — scrub engine: passive scroll listener →
   one `requestAnimationFrame` → seek. Progress is written directly onto nodes via
@@ -63,7 +63,11 @@ docker compose -f docker-compose.base44.yml up -d --build
   sticky film viewport.
 - Vite's dev server does serve `public/` with HTTP range requests (verified:
   `206 Partial Content` + `Accept-Ranges: bytes`), which seeking depends on.
-- Measured on the sandbox preview (desktop, 2240px scrub distance): seek latency
+- Scroll sensitivity is set only by `--hero-scrub` (CSS). At 640vh a ~100px wheel
+  notch advances ~0.20s of the film (~5 frames), so the whole 10.08s timeline takes
+  roughly 50 notches; the 280vh original was 2.3x faster than that. Nothing in the
+  JS needs retuning when the knob changes — it seeks `progress * duration` exactly.
+- Measured on the sandbox preview (desktop): seek latency
   cold 21ms / warm median 11ms (3–28ms); the whole file is buffered after ~1s, so
   seeks never hit the network; zero long tasks during scrubbing. A 40-step flick
   that crosses the film in ~0.65s issues one seek per frame, all of them complete,
