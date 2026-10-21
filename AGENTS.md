@@ -63,6 +63,17 @@ docker compose -f docker-compose.base44.yml up -d --build
   sticky film viewport.
 - Vite's dev server does serve `public/` with HTTP range requests (verified:
   `206 Partial Content` + `Accept-Ranges: bytes`), which seeking depends on.
+- Measured on the sandbox preview (desktop, 2240px scrub distance): seek latency
+  cold 21ms / warm median 11ms (3–28ms); the whole file is buffered after ~1s, so
+  seeks never hit the network; zero long tasks during scrubbing. A 40-step flick
+  that crosses the film in ~0.65s issues one seek per frame, all of them complete,
+  and the displayed frame trails by one scroll frame (~0.25s) — that is the
+  seek+present floor, deliberately not hidden behind interpolation. `onProgress`
+  only writes a style when the value actually changes (0 DOM writes while the copy
+  is already fully faded, ~2 per frame while it is fading).
+- To re-profile without touching app code, drive `window.scrollTo({behavior:'instant'})`
+  in a rAF loop and read `video.requestVideoFrameCallback` metadata: `meta.mediaTime`
+  is the frame actually on screen, which is what tells real lag from reported `currentTime`.
 
 ## Notes
 - Contact form is frontend-only (no backend/API); validates and shows success state

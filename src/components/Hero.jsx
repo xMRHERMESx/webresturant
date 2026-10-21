@@ -37,6 +37,11 @@ export default function Hero() {
   const reducedMotion = usePrefersReducedMotion()
   const scrub = !reducedMotion
 
+  // Last values written to the DOM, so only genuine changes cost a style
+  // recalculation: through most of a scrub the copy is already fully faded and
+  // the cue already hidden, and re-setting an identical style string is wasted work.
+  const writtenRef = useRef({ copy: null, cue: null })
+
   // Progress is written straight onto the nodes: no React state, so scrubbing
   // never re-renders the page. Both directions are the same pure function of
   // scroll position, so the copy fades and returns symmetrically.
@@ -46,12 +51,25 @@ export default function Hero() {
       const t = clamp01((progress - 0.06) / 0.34)
       const eased = t * t * (3 - 2 * t) // smoothstep — no abrupt hide
       const opacity = 1 - eased
-      content.style.opacity = opacity === 1 ? '' : opacity.toFixed(3)
-      content.style.transform = opacity === 1 ? '' : `translate3d(0, ${(-14 * eased).toFixed(1)}px, 0)`
-      content.style.pointerEvents = opacity < 0.2 ? 'none' : ''
+      const opacityValue = opacity === 1 ? '' : opacity.toFixed(3)
+      const transformValue = opacity === 1 ? '' : `translate3d(0, ${(-14 * eased).toFixed(1)}px, 0)`
+      const pointerValue = opacity < 0.2 ? 'none' : ''
+      const copyState = `${opacityValue}|${transformValue}|${pointerValue}`
+      if (writtenRef.current.copy !== copyState) {
+        writtenRef.current.copy = copyState
+        content.style.opacity = opacityValue
+        content.style.transform = transformValue
+        content.style.pointerEvents = pointerValue
+      }
     }
     const cue = cueRef.current
-    if (cue) cue.style.opacity = clamp01(1 - progress / 0.08).toFixed(3)
+    if (cue) {
+      const cueValue = clamp01(1 - progress / 0.08).toFixed(3)
+      if (writtenRef.current.cue !== cueValue) {
+        writtenRef.current.cue = cueValue
+        cue.style.opacity = cueValue
+      }
+    }
   }, [])
 
   const { status } = useScrollScrubVideo({
