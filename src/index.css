@@ -50,6 +50,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* `clip` also stops horizontal overflow but, unlike `hidden`, it does not turn
+     <body> into a scroll container — which would break the hero's position:sticky
+     film viewport. Browsers without `clip` keep the `hidden` above. */
+  overflow-x: clip;
 }
 
 img {

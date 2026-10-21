@@ -33,6 +33,37 @@ docker compose -f docker-compose.base44.yml up -d --build
 - All photos served from Pexels CDN (`images.pexels.com`) — verified reachable
 - `SmartImage` component provides a gradient fallback if any image fails to load
 
+## Hero film (scroll-scrubbed video)
+- `src/components/Hero.jsx` renders a scroll track (`--hero-scrub`, default 280vh,
+  190vh under 767px) wrapping a `position: sticky` viewport that holds the film.
+  Scroll position alone drives `video.currentTime`; the film is never played.
+- `src/hooks/useScrollScrubVideo.js` — scrub engine: passive scroll listener →
+  one `requestAnimationFrame` → seek. Progress is written directly onto nodes via
+  the `onProgress` callback, so scrubbing causes zero React re-renders. It also
+  owns readiness (`loading`/`ready`/`error`, 10s timeout) and degrades to the
+  still hero image on failure. `src/hooks/usePrefersReducedMotion.js` disables the
+  whole experience under `prefers-reduced-motion`.
+- Media lives in `public/media/`, re-encoded from the supplied footage with
+  ffmpeg (run in a throwaway `debian:12-slim` container — ffmpeg is NOT installed
+  in the sandbox or in the `web` image):
+  ```
+  ffmpeg -i source.mp4 -c:v libx264 -preset slow -crf 21 -pix_fmt yuv420p \
+    -g 6 -keyint_min 6 -sc_threshold 0 -x264-params ref=3:bframes=0 \
+    -c:a copy -movflags +faststart hero-720.mp4          # 1280x720, ~5.2MB
+  ffmpeg -i source.mp4 -vf scale=960:540 ... -crf 24 ... hero-540.mp4   # ~2.6MB
+  ```
+  Why it matters: the supplied source was 1280x720 @ ~9Mbps with only **2**
+  keyframes in 10s and `moov` at the end of the file. Seeking such a file makes
+  the decoder walk from the start on every scrub. The re-encodes keep the same
+  footage/framing but put a keyframe every 6 frames (41 total) and move metadata
+  to the front. `hero-540.mp4` is served to <=900px viewports and to clients with
+  `saveData`; exactly one file is downloaded per visit.
+- `body` uses `overflow-x: clip` (with `overflow-x: hidden` as the fallback) in
+  `src/index.css`: `hidden` would make `<body>` a scroll container and break the
+  sticky film viewport.
+- Vite's dev server does serve `public/` with HTTP range requests (verified:
+  `206 Partial Content` + `Accept-Ranges: bytes`), which seeking depends on.
+
 ## Notes
 - Contact form is frontend-only (no backend/API); validates and shows success state
 - Newsletter in footer validates email client-side
