@@ -1,0 +1,34 @@
+# Base44 sandbox environment for AVESTORA.
+# The site is a single static index.html with no build step; this stack serves the
+# cloned source through a live-reload dev server on host port 3000.
+# Run: docker compose -f docker-compose.base44.yml up -d
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.base44
+    working_dir: /app
+    # live-server watches the bind-mounted source and reloads the browser on change.
+    # --host=0.0.0.0 is required so the preview proxy can reach the dev server.
+    command:
+      - live-server
+      - --port=3000
+      - --host=0.0.0.0
+      - --no-browser
+      - --entry-file=index.html
+      - /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    labels:
+      base44.project: "AVESTORA"
+      base44.kind: "web"
+      base44.port: "3000"
+    restart: on-failure
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:3000/ || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s

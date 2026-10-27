@@ -1,0 +1,9 @@
+# Development image for the AVESTORA static site (Base44 sandbox).
+# Only the development server is installed here — the site source is bind-mounted
+# from the repository at run time, so every edit is served live without a rebuild.
+FROM node:22-alpine
+
+RUN npm install -g live-server@1.2.2
+
+WORKDIR /app
+EXPOSE 3000

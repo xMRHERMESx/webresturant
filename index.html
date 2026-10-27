@@ -1,0 +1,2693 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>آوِستورا | طراحی سایت و بازاریابی دیجیتال</title>
+<meta name="description" content="آوِستورا، آژانس طراحی سایت و بازاریابی دیجیتال؛ از هویت برند و طراحی وب‌سایت تا سئو، تبلیغات گوگل، بازاریابی اینستاگرام و استراتژی محتوا — همه در یک مسیر هدفمند برای رشد کسب‌وکار شما.">
+<meta name="theme-color" content="#090E18">
+<meta name="format-detection" content="telephone=no">
+<!-- محل قرارگیری دامنهٔ واقعی: مقدار زیر را پس از انتشار روی دامنهٔ خودتان جایگزین کنید -->
+<link rel="canonical" href="https://example.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AVESTORA">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="آوِستورا | طراحی سایت و بازاریابی دیجیتال">
+<meta property="og:description" content="از طراحی وب‌سایت تا بازاریابی دیجیتال؛ مسیر جذب مشتری، ساخت برند و رشد کسب‌وکار شما را هدفمند طراحی می‌کنیم.">
+<meta property="og:url" content="https://example.com/">
+<!-- تصویر اشتراک‌گذاری اجتماعی: پس از انتشار، آدرس تصویر ۱۲۰۰×۶۳۰ خود را اینجا قرار دهید -->
+<meta name="twitter:card" content="summary_large_image">
+<!-- فاوآیکون درون‌خطی؛ در صورت تمایل با فایل اختصاصی جایگزین کنید -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090E18'/%3E%3Cpath d='M8.5 22.5 16 8.6l7.5 13.9h-4.1L16 16.2l-3.4 6.3z' fill='%23C6FF2E'/%3E%3Ccircle cx='16' cy='24.4' r='1.6' fill='%233FD8FF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter+Tight:wght@400;500;600;700&display=swap">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<style>
+/* =====================================================================
+   AVESTORA — Design System
+   1. Tokens
+   2. Base & accessibility
+   3. Layout primitives
+   4. Controls
+   5. Header & navigation
+   6. Hero (cinematic scroll stage)
+   7. Trust / Services / Growth / Work
+   8. Process / Why / Plans / FAQ
+   9. Contact / Final CTA / Footer / Dialogs
+  10. Responsive
+  11. Motion preferences
+   ===================================================================== */
+
+/* ---------------------------------------------------------------- 1. Tokens */
+:root{
+  /* surfaces */
+  --bg-deep:#090E18;
+  --bg-night:#0F1626;
+  --surface:#151D2D;
+  --surface-elev:#202A3D;
+  /* ink */
+  --text:#F4F6FA;
+  --text-2:rgba(244,246,250,.72);
+  --text-3:rgba(244,246,250,.46);
+  /* accents */
+  --lime:#C6FF2E;
+  --cyan:#3FD8FF;
+  --lime-soft:rgba(198,255,46,.12);
+  --cyan-soft:rgba(63,216,255,.12);
+  --on-lime:#0A1206;
+  /* lines */
+  --line:rgba(255,255,255,.12);
+  --line-strong:rgba(255,255,255,.22);
+  /* type */
+  --font-fa:'Vazirmatn','Vazir',Tahoma,'Segoe UI',system-ui,sans-serif;
+  --font-en:'Inter Tight','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fs-display:clamp(36px,6.1vw,84px);
+  --fs-h2:clamp(26px,3.8vw,50px);
+  --fs-h3:clamp(19px,1.7vw,25px);
+  --fs-h4:clamp(16.5px,1.2vw,19px);
+  --fs-body:clamp(15px,1.05vw,17.5px);
+  --fs-sm:clamp(13.5px,.95vw,15px);
+  --fs-label:clamp(11px,.8vw,13px);
+  /* geometry */
+  --maxw:1280px;
+  --gutter:clamp(18px,5vw,44px);
+  --radius-sm:12px;
+  --radius:18px;
+  --radius-lg:24px;
+  --section-y:clamp(72px,9vw,140px);
+  --header-h:72px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --shadow-soft:0 28px 70px -34px rgba(0,0,0,.8);
+  --hero-track:380vh;
+  --focus:var(--cyan);
+}
+
+/* ------------------------------------------------- 2. Base & accessibility */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg-deep);
+  color:var(--text);
+  font-family:var(--font-fa);
+  font-size:var(--fs-body);
+  line-height:1.85;
+  font-weight:400;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  /* atmospheric ground: deep navy with restrained cyan/lime light wells */
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 78% -8%,rgba(63,216,255,.10),transparent 62%),
+    radial-gradient(760px 480px at 12% 6%,rgba(198,255,46,.05),transparent 66%),
+    linear-gradient(180deg,var(--bg-night) 0%,var(--bg-deep) 42%,var(--bg-deep) 100%);
+}
+img,video,svg{max-width:100%;display:block}
+h1,h2,h3,h4,p,ul,ol,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:8px}
+.btn--lime:focus-visible{outline-color:var(--lime)}
+::selection{background:var(--lime);color:var(--on-lime)}
+[hidden]{display:none !important}
+.skip-link{
+  position:absolute;inset-inline-start:50%;transform:translate(50%,-140%);
+  z-index:200;padding:12px 20px;border-radius:0 0 var(--radius-sm) var(--radius-sm);
+  background:var(--lime);color:var(--on-lime);font-weight:600;font-size:var(--fs-sm);
+  transition:transform .2s var(--ease);
+}
+.skip-link:focus{transform:translate(50%,0)}
+.visually-hidden{position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ltr{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en);letter-spacing:.02em}
+.num{direction:ltr;unicode-bidi:isolate;font-family:var(--font-en);font-variant-numeric:tabular-nums}
+
+/* -------------------------------------------------- 3. Layout primitives */
+.container{width:min(100% - (var(--gutter) * 2),var(--maxw));margin-inline:auto}
+.section{padding-block:var(--section-y);position:relative}
+.section--tinted{background:linear-gradient(180deg,rgba(21,29,45,.55),rgba(9,14,24,0));border-block:1px solid var(--line)}
+.section__head{max-width:760px;margin-bottom:clamp(36px,5vw,68px)}
+.section__head--center{margin-inline:auto;text-align:center}
+.section__title{font-size:var(--fs-h2);line-height:1.35;font-weight:700;letter-spacing:-.01em}
+.section__lead{color:var(--text-2);margin-top:18px;max-width:62ch;line-height:1.95}
+.section__head--center .section__lead{margin-inline:auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;font-size:var(--fs-label);
+  color:var(--cyan);letter-spacing:.08em;font-weight:600;margin-bottom:20px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:currentColor;opacity:.7}
+.eyebrow--plain::before{display:none}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+.text-cyan{color:var(--cyan)}
+.text-lime{color:var(--lime)}
+
+/* --------------------------------------------------------------- 4. Controls */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:inherit;font-size:var(--fs-sm);font-weight:600;line-height:1;
+  padding:15px 24px;border-radius:999px;border:1px solid transparent;
+  cursor:pointer;background:none;white-space:nowrap;
+  transition:transform .25s var(--ease),background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn__icon{width:16px;height:16px;flex:none}
+.btn--lime{background:var(--lime);color:var(--on-lime);box-shadow:0 12px 34px -14px rgba(198,255,46,.55)}
+.btn--lime:hover{background:#d3ff57;box-shadow:0 18px 40px -14px rgba(198,255,46,.62)}
+.btn--ghost{border-color:var(--line-strong);color:var(--text)}
+.btn--ghost:hover{border-color:rgba(63,216,255,.6);color:var(--cyan);background:rgba(63,216,255,.06)}
+.btn--quiet{padding-inline:8px;color:var(--text-2)}
+.btn--quiet:hover{color:var(--lime)}
+.btn--block{width:100%}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.6;cursor:not-allowed;transform:none}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--text-2);
+  font-size:var(--fs-label);font-weight:500;cursor:pointer;
+  transition:border-color .25s var(--ease),color .25s var(--ease),background-color .25s var(--ease);
+}
+.chip:hover{border-color:var(--line-strong);color:var(--text)}
+.chip[aria-pressed="true"]{border-color:rgba(198,255,46,.55);background:var(--lime-soft);color:var(--text)}
+.badge{
+  display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(63,216,255,.07);
+  font-size:var(--fs-label);color:var(--cyan);font-weight:500;
+}
+.link-arrow{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-weight:600;font-size:var(--fs-sm)}
+.link-arrow svg{width:16px;height:16px;transition:transform .25s var(--ease)}
+.link-arrow:hover svg{transform:translateX(-4px)}
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.is-visible{opacity:1;transform:none}
+
+/* -------------------------------------------------- 5. Header & navigation */
+.site-header{position:fixed;inset-block-start:0;inset-inline:0;z-index:90;transition:background-color .35s var(--ease),border-color .35s var(--ease)}
+.site-header::after{content:"";position:absolute;inset-inline:0;bottom:0;height:1px;background:var(--line);opacity:0;transition:opacity .35s var(--ease)}
+.site-header.is-scrolled{background:rgba(9,14,24,.88);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%)}
+.site-header.is-scrolled::after{opacity:1}
+@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){.site-header.is-scrolled{background:#0B111C}}
+.site-header__inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;height:var(--header-h)}
+.nav{display:contents}
+.nav__list{display:flex;align-items:center;gap:clamp(2px,1vw,18px)}
+.nav__link{
+  position:relative;display:inline-block;padding:10px 12px;border-radius:10px;
+  font-size:var(--fs-sm);color:var(--text-2);font-weight:500;
+  transition:color .25s var(--ease);
+}
+.nav__link::after{
+  content:"";position:absolute;inset-block-end:2px;inset-inline:50%;width:4px;height:4px;border-radius:50%;
+  background:var(--cyan);transform:translateX(50%) scale(0);transition:transform .25s var(--ease);
+}
+.nav__link:hover{color:var(--text)}
+.nav__link[aria-current="true"]{color:var(--text)}
+.nav__link[aria-current="true"]::after{transform:translateX(50%) scale(1)}
+.brand{display:inline-flex;align-items:center;gap:10px;justify-self:center;padding:6px}
+.brand__mark{width:26px;height:26px;flex:none}
+.brand__word{font-family:var(--font-en);font-weight:600;font-size:clamp(17px,1.5vw,20px);letter-spacing:.16em;color:var(--text)}
+.nav__actions{display:flex;align-items:center;gap:10px;justify-self:end}
+.nav__toggle{
+  display:none;width:46px;height:46px;border-radius:14px;border:1px solid var(--line-strong);
+  background:rgba(21,29,45,.6);align-items:center;justify-content:center;cursor:pointer;
+}
+.nav__toggle span{display:block;width:18px;height:1.5px;background:var(--text);position:relative}
+.nav__toggle span::before,.nav__toggle span::after{content:"";position:absolute;inset-inline:0;height:1.5px;background:var(--text);transition:transform .25s var(--ease)}
+.nav__toggle span::before{top:-6px}
+.nav__toggle span::after{top:6px}
+.mobile-menu{display:none}
+.site-header.is-menu-open .mobile-menu{display:block;position:fixed;inset:var(--header-h) 0 0;background:rgba(9,14,24,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);overflow-y:auto;padding:26px var(--gutter) 40px;animation:menuIn .28s var(--ease)}
+@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){.site-header.is-menu-open .mobile-menu{background:#0B111C}}
+@keyframes menuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mobile-menu__top{display:flex;justify-content:flex-end;margin-bottom:12px}
+.mobile-menu__close{
+  width:44px;height:44px;border-radius:14px;border:1px solid var(--line-strong);
+  background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.mobile-menu__close svg{width:18px;height:18px}
+.mobile-menu__list{display:grid;gap:4px;margin-bottom:26px}
+.mobile-menu__link{display:block;padding:16px 4px;font-size:clamp(18px,5vw,22px);font-weight:600;border-block-end:1px solid var(--line);color:var(--text)}
+.mobile-menu__link:hover{color:var(--lime)}
+.mobile-menu__actions{display:grid;gap:12px}
+body.is-locked{overflow:hidden}
+
+/* -------------------------------------------------- 6. Hero scroll stage */
+.hero{position:relative;background:var(--bg-deep)}
+.hero__track{height:var(--hero-track);position:relative}
+.hero__sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center}
+.hero__scene{position:absolute;inset:0;overflow:hidden;z-index:1}
+.hero__sky{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(120% 78% at 50% 108%,rgba(63,216,255,.20),transparent 60%),
+    radial-gradient(70% 50% at 50% -14%,rgba(63,216,255,.12),transparent 66%),
+    linear-gradient(180deg,#0A101D 0%,#0F1626 46%,#0B1220 100%);
+}
+.hero__grid{
+  position:absolute;inset-inline:-20%;inset-block-end:-14%;height:64%;
+  background-image:
+    linear-gradient(to right,rgba(63,216,255,.16) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(63,216,255,.13) 1px,transparent 1px);
+  background-size:70px 70px;
+  transform:perspective(620px) rotateX(64deg);
+  transform-origin:bottom center;
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 38%,#000);
+  mask-image:linear-gradient(to bottom,transparent,#000 38%,#000);
+  opacity:.5;
+}
+.hero__network{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
+.hero__network path{fill:none;stroke:rgba(63,216,255,.42);stroke-width:1;vector-effect:non-scaling-stroke}
+.hero__network path[data-flow]{
+  stroke-dasharray:6 10;stroke:rgba(63,216,255,.7);
+  animation:flow 6s linear infinite;
+}
+@keyframes flow{to{stroke-dashoffset:-160}}
+.hero__hub{
+  position:absolute;inset-inline-start:50%;inset-block-start:50%;width:min(56vw,460px);aspect-ratio:1;
+  transform:translate(50%,-50%) translateY(var(--hub-y,10%)) scale(var(--hub-scale,.55));
+  opacity:var(--hub-opacity,.4);
+  transition:opacity .4s linear;
+  will-change:transform,opacity;
+}
+.hero__hub-core{
+  position:absolute;inset:26%;border-radius:50%;
+  background:radial-gradient(circle at 50% 42%,rgba(63,216,255,.55),rgba(63,216,255,.06) 62%,transparent 72%);
+  box-shadow:0 0 120px 30px rgba(63,216,255,.14) inset;
+}
+.hero__hub-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(63,216,255,.24)}
+.hero__hub-ring:nth-child(2){inset:14%;border-color:rgba(63,216,255,.16)}
+.hero__hub-ring:nth-child(3){inset:30%;border-color:rgba(198,255,46,.18)}
+.hero__hub-pulse{position:absolute;inset:26%;border-radius:50%;border:1px solid rgba(63,216,255,.5);animation:pulse 4.6s var(--ease) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(1.7);opacity:0}100%{opacity:0}}
+.hero__channels{position:absolute;inset:0;z-index:3}
+.hero__channel{
+  position:absolute;inset-inline-start:var(--x);inset-block-start:var(--y);
+  transform:translate(50%,-50%);
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:999px;border:1px solid var(--line);
+  background:rgba(15,22,38,.72);color:var(--text-2);
+  font-size:var(--fs-label);white-space:nowrap;
+  opacity:var(--node-opacity,0);
+  transition:opacity .35s linear,border-color .35s var(--ease),color .35s var(--ease),background-color .35s var(--ease),box-shadow .35s var(--ease);
+}
+.hero__channel::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(63,216,255,.5);flex:none;transition:background-color .35s var(--ease),box-shadow .35s var(--ease)}
+.hero__channel.is-active{border-color:rgba(63,216,255,.5);color:var(--text);background:rgba(19,30,48,.92);box-shadow:0 0 26px -6px rgba(63,216,255,.4)}
+.hero__channel.is-active::before{background:var(--lime);box-shadow:0 0 10px 2px rgba(198,255,46,.6)}
+.hero__channel:nth-child(1){--x:50%;--y:17%}
+.hero__channel:nth-child(2){--x:79%;--y:35%}
+.hero__channel:nth-child(3){--x:79%;--y:65%}
+.hero__channel:nth-child(4){--x:50%;--y:83%}
+.hero__channel:nth-child(5){--x:21%;--y:65%}
+.hero__channel:nth-child(6){--x:21%;--y:35%}
+.hero__scrim{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(58% 46% at 50% 46%,rgba(9,14,24,.82),rgba(9,14,24,.35) 62%,transparent 78%);
+}
+.hero__content{
+  position:relative;z-index:4;width:min(100% - (var(--gutter) * 2),820px);text-align:center;
+  transform-style:preserve-3d;transform-origin:50% 50%;will-change:transform,opacity;
+}
+.hero__eyebrow{color:var(--cyan)}
+.hero__title{font-size:var(--fs-display);font-weight:800;line-height:1.24;letter-spacing:-.02em;text-wrap:balance;margin-bottom:22px}
+.hero__title span{white-space:nowrap}
+.hero__lead{color:var(--text-2);font-size:clamp(15px,1.15vw,18px);line-height:2;max-width:58ch;margin-inline:auto}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
+.hero__micro{margin-top:28px;font-size:var(--fs-label);letter-spacing:.28em;color:var(--text-3);font-family:var(--font-en);direction:ltr;unicode-bidi:isolate}
+.hero__hint{
+  position:absolute;inset-block-end:26px;inset-inline-start:50%;transform:translateX(50%);z-index:4;
+  display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text-3);
+  font-size:var(--fs-label);opacity:var(--hint-opacity,1);transition:opacity .3s linear;pointer-events:none;
+}
+.hero__hint-glyph{width:20px;height:30px;border:1px solid var(--line-strong);border-radius:999px;position:relative}
+.hero__hint-glyph::after{content:"";position:absolute;inset-inline-start:50%;inset-block-start:6px;width:2px;height:6px;border-radius:2px;background:var(--cyan);transform:translateX(50%);animation:wheel 1.9s var(--ease) infinite}
+@keyframes wheel{0%{opacity:0;transform:translate(50%,-3px)}35%{opacity:1}100%{opacity:0;transform:translate(50%,9px)}}
+.hero__footer-bar{position:absolute;inset-block-end:0;inset-inline:0;z-index:4;height:2px;background:rgba(255,255,255,.06)}
+.hero__bar-fill{display:block;height:100%;width:var(--progress,0%);background:linear-gradient(90deg,var(--cyan),var(--lime));transition:width .1s linear}
+.hero__arrival{
+  position:absolute;inset-block-end:52px;inset-inline-start:var(--gutter);z-index:4;
+  display:grid;gap:12px;opacity:var(--arrival-opacity,0);transition:opacity .35s linear;pointer-events:none;
+}
+.hero__arrival-label{font-size:var(--fs-label);color:var(--text-3);letter-spacing:.06em}
+.hero__stages{display:flex;flex-wrap:wrap;gap:8px}
+.hero__stage{
+  display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(15,22,38,.7);font-size:var(--fs-label);color:var(--text-3);
+}
+.hero__stage.is-on{border-color:rgba(198,255,46,.45);color:var(--text)}
+.hero__stage.is-on .hero__stage-dot{background:var(--lime);box-shadow:0 0 8px 2px rgba(198,255,46,.55)}
+.hero__stage-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);flex:none}
+.hero__fallback{
+  position:absolute;inset-block-end:26px;inset-inline-end:var(--gutter);z-index:3;
+  font-size:var(--fs-label);color:var(--text-3);max-width:260px;text-align:end;
+}
+/* ------------------------------------------- 7. Trust · Services · Growth */
+html{overflow-x:hidden;scroll-behavior:smooth;scroll-padding-block-start:calc(var(--header-h) + 14px)}
+body{overflow-x:clip}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Trust & value statement */
+.trust__grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(30px,5vw,72px);align-items:start}
+.trust__statement{font-size:clamp(24px,2.6vw,36px);line-height:1.5;font-weight:700;letter-spacing:-.01em}
+.trust__statement span{white-space:nowrap}
+.principles{position:relative;padding-inline-start:36px}
+.principles::before{content:"";position:absolute;inset-block:16px;inset-inline-start:9px;width:1px;background:linear-gradient(180deg,transparent,var(--line-strong) 12%,var(--line-strong) 88%,transparent)}
+.principle{position:relative;padding-block:22px}
+.principle:first-child{padding-block-start:6px}
+.principle::before{content:"";position:absolute;inset-inline-start:-36px;inset-block-start:30px;width:11px;height:11px;border-radius:50%;background:var(--bg-deep);border:1px solid rgba(63,216,255,.55)}
+.principle:first-child::before{inset-block-start:14px;background:var(--lime);border-color:var(--lime);box-shadow:0 0 16px 2px rgba(198,255,46,.35)}
+.principle__num{font-family:var(--font-en);font-size:var(--fs-label);color:var(--cyan);letter-spacing:.14em}
+.principle__title{font-size:var(--fs-h4);font-weight:600;margin:6px 0 8px}
+.principle__text{color:var(--text-2);font-size:var(--fs-sm);line-height:1.95}
+
+/* Cards */
+.card{
+  position:relative;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(32,42,61,.55),rgba(15,22,38,.5));
+  padding:clamp(20px,2.4vw,30px);overflow:hidden;
+  transition:border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.card::before{content:"";position:absolute;inset-block-start:0;inset-inline:0;height:1px;background:linear-gradient(90deg,transparent,rgba(63,216,255,.5),transparent);opacity:0;transition:opacity .3s var(--ease)}
+.card:hover{border-color:var(--line-strong);transform:translateY(-3px);box-shadow:var(--shadow-soft)}
+.card:hover::before{opacity:1}
+.card__index{font-family:var(--font-en);font-size:var(--fs-label);color:var(--cyan);letter-spacing:.16em}
+.card__title{font-size:var(--fs-h3);font-weight:600;line-height:1.5;margin:12px 0 12px;letter-spacing:-.01em}
+.card__text{color:var(--text-2);font-size:var(--fs-sm);line-height:1.95}
+.card__foot{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* Services */
+.services__feature{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,3vw,44px);align-items:center;margin-bottom:clamp(20px,2.4vw,28px);padding:clamp(24px,3vw,42px)}
+.services__feature .card__title{font-size:clamp(23px,2.4vw,32px)}
+.services__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(16px,2vw,22px)}
+
+/* Mock visuals (self-contained, no external images) */
+.mock{
+  position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(160deg,#131B2B,#0B111C 72%);isolation:isolate;
+}
+.mock::after{content:"";position:absolute;inset:0;background:radial-gradient(72% 62% at 82% 0%,rgba(63,216,255,.16),transparent 62%);pointer-events:none}
+.mock__chrome{display:flex;align-items:center;gap:6px;padding:11px 14px;border-block-end:1px solid var(--line);background:rgba(9,14,24,.55)}
+.mock__dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.16)}
+.mock__dot:first-child{background:rgba(198,255,46,.55)}
+.mock__url{margin-inline-start:8px;height:7px;flex:1;max-width:170px;border-radius:999px;background:rgba(255,255,255,.07)}
+.mock__body{padding:clamp(14px,1.6vw,20px);display:grid;gap:10px}
+.mock__block{border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}
+.mock__block--accent{background:linear-gradient(120deg,rgba(63,216,255,.26),rgba(63,216,255,.05));border-color:rgba(63,216,255,.24)}
+.mock__block--lime{background:linear-gradient(120deg,rgba(198,255,46,.28),rgba(198,255,46,.05));border-color:rgba(198,255,46,.24)}
+.mock__row{display:grid;grid-auto-flow:column;gap:10px}
+.mock__line{height:7px;border-radius:999px;background:rgba(255,255,255,.1)}
+.mock__line--short{width:42%}
+.mock__line--mid{width:68%}
+.mock__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mock__tile{aspect-ratio:1/1;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06)}
+.mock__tile:nth-child(2){background:rgba(63,216,255,.12)}
+.mock__tile:nth-child(5){background:rgba(198,255,46,.1)}
+.mock__swatches{display:flex;gap:9px;align-items:center}
+.mock__swatch{width:34px;height:34px;border-radius:9px;border:1px solid var(--line)}
+.mock__swatch--lime{background:var(--lime)}
+.mock__swatch--cyan{background:var(--cyan)}
+.mock__swatch--navy{background:#151D2D}
+.mock__swatch--ink{background:#0F1626}
+.mock__phone{width:56%;margin-inline:auto;aspect-ratio:9/15;border-radius:16px;border:1px solid var(--line-strong);background:#0B111C;padding:12px;display:grid;gap:9px;align-content:start}
+.mock__play{width:34px;height:34px;border-radius:50%;border:1px solid rgba(198,255,46,.5);display:grid;place-items:center;margin-inline:auto}
+.mock__play::before{content:"";width:0;height:0;border-inline-start:9px solid var(--lime);border-block:6px solid transparent}
+
+/* Interactive growth model */
+.growth__grid{display:grid;grid-template-columns:1fr 1.02fr;gap:clamp(28px,4vw,64px);align-items:center}
+.stage-tabs{display:grid;gap:10px;margin-bottom:24px}
+.stage-tab{
+  display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;
+  padding:15px 18px;border-radius:var(--radius-sm);border:1px solid var(--line);
+  background:rgba(21,29,45,.45);text-align:start;cursor:pointer;
+  transition:border-color .25s var(--ease),background-color .25s var(--ease),transform .25s var(--ease);
+}
+.stage-tab:hover{border-color:var(--line-strong);transform:translateX(-3px)}
+.stage-tab[aria-selected="true"]{border-color:rgba(198,255,46,.5);background:linear-gradient(270deg,rgba(198,255,46,.1),rgba(21,29,45,.4))}
+.stage-tab__num{font-family:var(--font-en);font-size:var(--fs-label);color:var(--cyan);letter-spacing:.12em}
+.stage-tab__title{font-weight:600;font-size:var(--fs-h4);line-height:1.6}
+.stage-panel{padding-inline-start:2px}
+.stage-panel__title{font-size:var(--fs-h3);font-weight:600;margin-bottom:10px}
+.stage-panel__text{color:var(--text-2);font-size:var(--fs-sm);line-height:1.95;max-width:52ch}
+.js .stage-panel{display:none}
+.js .stage-panel.is-active{display:block}
+.hub{position:relative;width:100%;max-width:500px;aspect-ratio:1/1;margin-inline:auto}
+.hub__svg{position:absolute;inset:0;width:100%;height:100%}
+.hub__svg path{fill:none;stroke:rgba(255,255,255,.13);stroke-width:1;vector-effect:non-scaling-stroke;transition:stroke .35s var(--ease)}
+.hub__svg path.is-active{stroke:rgba(63,216,255,.7)}
+.hub__ring{position:absolute;inset:7%;border-radius:50%;border:1px dashed rgba(255,255,255,.08)}
+.hub__ring--inner{inset:20%;border-style:solid;border-color:rgba(63,216,255,.12)}
+.hub__center{
+  position:absolute;inset-inline-start:50%;inset-block-start:50%;transform:translate(50%,-50%);
+  width:34%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;text-align:center;padding:8px;
+  border:1px solid rgba(63,216,255,.35);
+  background:radial-gradient(circle at 50% 38%,rgba(63,216,255,.24),rgba(9,14,24,.92) 72%);
+  box-shadow:0 0 90px -14px rgba(63,216,255,.45);
+}
+.hub__center-label{font-size:var(--fs-label);color:var(--text-2);line-height:1.7}
+.hub__center-label strong{display:block;color:var(--text);font-size:calc(var(--fs-label) + 2px);font-weight:600}
+.growth-node{
+  position:absolute;inset-inline-start:var(--x);inset-block-start:var(--y);transform:translate(50%,-50%);
+  display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(15,22,38,.9);color:var(--text-2);
+  font-size:var(--fs-label);white-space:nowrap;
+  transition:border-color .3s var(--ease),color .3s var(--ease),box-shadow .3s var(--ease),background-color .3s var(--ease);
+}
+.growth-node::before{content:"";width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.22);flex:none;transition:background-color .3s var(--ease)}
+.growth-node.is-active{border-color:rgba(198,255,46,.5);color:var(--text);background:rgba(19,30,48,.96);box-shadow:0 0 26px -8px rgba(198,255,46,.45)}
+.growth-node.is-active::before{background:var(--lime)}
+.growth-node:nth-of-type(1){--x:50%;--y:9%}
+.growth-node:nth-of-type(2){--x:87%;--y:29%}
+.growth-node:nth-of-type(3){--x:87%;--y:71%}
+.growth-node:nth-of-type(4){--x:50%;--y:91%}
+.growth-node:nth-of-type(5){--x:13%;--y:71%}
+.growth-node:nth-of-type(6){--x:13%;--y:29%}
+.growth__note{margin-top:26px;color:var(--text-3);font-size:var(--fs-label);line-height:1.9}
+
+/* Work / portfolio */
+.work__filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(24px,3vw,36px)}
+.work__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2vw,24px)}
+.work-card{
+  grid-column:span 6;display:flex;flex-direction:column;
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(180deg,rgba(32,42,61,.45),rgba(15,22,38,.45));
+  transition:border-color .3s var(--ease),transform .3s var(--ease);
+}
+.work-card--wide{grid-column:span 7}
+.work-card--narrow{grid-column:span 5}
+.work-card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.work-card__body{padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:10px;flex:1}
+.work-card__meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.work-card__title{font-size:var(--fs-h3);font-weight:600;line-height:1.55}
+.work-card__text{color:var(--text-2);font-size:var(--fs-sm);line-height:1.9;flex:1}
+.work-card .mock{border:0;border-radius:0;border-block-end:1px solid var(--line);aspect-ratio:16/10}
+.work-empty{margin-top:8px;color:var(--text-3);font-size:var(--fs-sm)}
+
+/* ------------------------------------------- 8. Process · Why · Plans · FAQ */
+.process{position:relative}
+.process__list{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.2vw,30px)}
+.process__list::before{content:"";position:absolute;inset-block-start:23px;inset-inline:12.5%;height:1px;background:var(--line)}
+.process-step{position:relative;padding-block-start:58px}
+.process-step__dot{position:absolute;inset-block-start:17px;inset-inline-start:0;width:13px;height:13px;border-radius:50%;background:var(--bg-deep);border:1px solid var(--line-strong);transition:background-color .4s var(--ease),border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.process-step.is-active .process-step__dot{background:var(--lime);border-color:var(--lime);box-shadow:0 0 0 7px rgba(198,255,46,.1)}
+.process-step__num{font-family:var(--font-en);font-size:var(--fs-label);letter-spacing:.16em;color:var(--text-3);transition:color .4s var(--ease)}
+.process-step.is-active .process-step__num{color:var(--cyan)}
+.process-step__title{font-size:var(--fs-h4);font-weight:600;margin:8px 0 10px}
+.process-step__text{color:var(--text-2);font-size:var(--fs-sm);line-height:1.95}
+
+.why__grid{display:grid;grid-template-columns:.98fr 1.02fr;gap:clamp(28px,4vw,64px);align-items:start}
+.compare{display:grid;gap:14px;margin-top:28px}
+.compare__item{padding:18px 20px;border-radius:var(--radius-sm);border:1px solid var(--line);background:rgba(21,29,45,.4)}
+.compare__item--positive{border-color:rgba(63,216,255,.28);background:linear-gradient(270deg,rgba(63,216,255,.08),rgba(21,29,45,.35))}
+.compare__label{font-size:var(--fs-label);letter-spacing:.06em;color:var(--text-3);margin-bottom:6px}
+.compare__item--positive .compare__label{color:var(--cyan)}
+.compare__text{font-size:var(--fs-sm);color:var(--text-2);line-height:1.9}
+.values{display:grid;gap:2px}
+.value{padding:clamp(18px,2vw,26px) 0;border-block-end:1px solid var(--line)}
+.value:last-child{border-block-end:0}
+.value__title{font-size:var(--fs-h4);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.value__title::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--cyan);flex:none;transform:rotate(45deg)}
+.value__text{color:var(--text-2);font-size:var(--fs-sm);line-height:1.95;padding-inline-start:19px}
+
+.plans__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);align-items:start}
+.plan{display:flex;flex-direction:column;gap:16px;height:100%}
+.plan--featured{border-color:rgba(198,255,46,.4);background:linear-gradient(180deg,rgba(198,255,46,.07),rgba(15,22,38,.5))}
+.plan--featured::before{opacity:1;background:linear-gradient(90deg,transparent,rgba(198,255,46,.6),transparent)}
+.plan__title{font-size:var(--fs-h3);font-weight:600}
+.plan__text{color:var(--text-2);font-size:var(--fs-sm);line-height:1.9}
+.plan__list{display:grid;gap:11px;margin:4px 0 6px}
+.plan__item{display:flex;align-items:flex-start;gap:10px;font-size:var(--fs-sm);color:var(--text-2);line-height:1.8}
+.plan__item svg{width:16px;height:16px;flex:none;margin-top:7px;color:var(--cyan)}
+.plan__foot{margin-top:auto}
+.plans__note{margin-top:28px;color:var(--text-3);font-size:var(--fs-sm);line-height:1.95}
+
+.faq{display:grid;gap:12px;max-width:920px;margin-inline:auto}
+.faq__item{border:1px solid var(--line);border-radius:var(--radius-sm);background:rgba(21,29,45,.4);transition:border-color .3s var(--ease),background-color .3s var(--ease)}
+.faq__item[open]{border-color:var(--line-strong);background:rgba(32,42,61,.5)}
+.faq__trigger{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;
+  padding:20px clamp(16px,2vw,24px);cursor:pointer;text-align:start;list-style:none;
+}
+.faq__trigger::-webkit-details-marker{display:none}
+.faq__trigger:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.faq__num{font-family:var(--font-en);font-size:var(--fs-label);color:var(--cyan);letter-spacing:.1em}
+.faq__question{font-size:var(--fs-h4);font-weight:600;line-height:1.75}
+.faq__icon{width:22px;height:22px;position:relative;flex:none}
+.faq__icon::before,.faq__icon::after{content:"";position:absolute;inset-inline-start:50%;inset-block-start:50%;background:var(--text-2);transform:translate(50%,-50%);transition:transform .3s var(--ease),background-color .3s var(--ease)}
+.faq__icon::before{width:14px;height:1.5px}
+.faq__icon::after{width:1.5px;height:14px}
+.faq__item[open] .faq__icon::before{background:var(--lime)}
+.faq__item[open] .faq__icon::after{transform:translate(50%,-50%) scaleY(0);background:var(--lime)}
+.faq__panel-inner{overflow:hidden}
+.faq__item[open] .faq__panel{animation:faqIn .34s var(--ease)}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.faq__answer{padding:0 clamp(16px,2vw,24px) 22px;color:var(--text-2);font-size:var(--fs-sm);line-height:2;max-width:70ch}
+
+/* ------------------------------------- 9. Contact · CTA · Footer · Dialogs */
+.contact__grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(28px,4vw,60px);align-items:start}
+.contact__links{display:grid;gap:12px;margin-top:30px}
+.contact__link{
+  display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:var(--radius-sm);
+  border:1px solid var(--line);background:rgba(21,29,45,.4);transition:border-color .3s var(--ease),background-color .3s var(--ease);
+}
+.contact__link:hover{border-color:rgba(63,216,255,.4);background:rgba(32,42,61,.5)}
+.contact__link svg{width:18px;height:18px;flex:none;color:var(--cyan)}
+.contact__link-label{font-size:var(--fs-label);color:var(--text-3);display:block}
+.contact__link-value{font-size:var(--fs-sm);color:var(--text);word-break:break-word}
+.contact__note{margin-top:22px;padding:16px 18px;border-radius:var(--radius-sm);border:1px dashed var(--line-strong);color:var(--text-3);font-size:var(--fs-sm);line-height:1.9}
+
+.form-card{border:1px solid var(--line);border-radius:var(--radius-lg);background:linear-gradient(180deg,rgba(32,42,61,.5),rgba(15,22,38,.55));padding:clamp(22px,3vw,36px)}
+.form__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.field{display:grid;gap:8px}
+.field--full{grid-column:1/-1}
+.field__label{font-size:var(--fs-sm);font-weight:500;color:var(--text-2);display:flex;align-items:center;gap:8px}
+.field__req{color:var(--lime);font-size:var(--fs-label)}
+.field__optional{color:var(--text-3);font-size:var(--fs-label);font-weight:400}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 16px;border-radius:var(--radius-sm);
+  border:1px solid var(--line);background:rgba(9,14,24,.62);color:var(--text);
+  font-size:var(--fs-sm);line-height:1.7;transition:border-color .25s var(--ease),background-color .25s var(--ease);
+}
+.field textarea{min-height:132px;resize:vertical}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--text-3) 50%),linear-gradient(135deg,var(--text-3) 50%,transparent 50%);background-position:calc(0% + 20px) 50%,calc(0% + 14px) 50%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-inline-start:42px}
+.field input::placeholder,.field textarea::placeholder{color:var(--text-3)}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--line-strong)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(63,216,255,.6);background:rgba(9,14,24,.85);outline-offset:1px}
+.field__error{color:#FFB4A2;font-size:var(--fs-label);line-height:1.8;min-height:0}
+.field.is-invalid input,.field.is-invalid select,.field.is-invalid textarea{border-color:rgba(255,138,117,.65)}
+.field--check{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.field--check input{width:20px;height:20px;margin-top:5px;accent-color:var(--lime);padding:0}
+.field--check .field__error{grid-column:2}
+.field__hint{color:var(--text-3);font-size:var(--fs-label);line-height:1.8}
+.form__foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:22px}
+.form__status{
+  border-radius:var(--radius-sm);border:1px solid var(--line);padding:14px 16px;margin-top:18px;
+  font-size:var(--fs-sm);line-height:1.9;display:grid;gap:6px;
+}
+.form__status[data-state="error"]{border-color:rgba(255,138,117,.45);background:rgba(255,138,117,.08);color:#FFC9BC}
+.form__status[data-state="success"]{border-color:rgba(198,255,46,.4);background:rgba(198,255,46,.07);color:var(--text)}
+.form__status[data-state="info"]{border-color:rgba(63,216,255,.35);background:rgba(63,216,255,.06);color:var(--text-2)}
+.form__status strong{color:var(--text);font-weight:600}
+.form-success{border:1px solid rgba(198,255,46,.4);background:linear-gradient(180deg,rgba(198,255,46,.08),rgba(15,22,38,.5));border-radius:var(--radius-lg);padding:clamp(24px,3vw,40px);display:grid;gap:14px;justify-items:start}
+.form-success__mark{width:44px;height:44px;border-radius:50%;border:1px solid rgba(198,255,46,.5);display:grid;place-items:center;color:var(--lime)}
+.form-success__mark svg{width:22px;height:22px}
+.form-success h3{font-size:var(--fs-h3);font-weight:600}
+.form-success p{color:var(--text-2);font-size:var(--fs-sm)}
+
+.cta-banner{
+  position:relative;overflow:hidden;border:1px solid var(--line-strong);border-radius:var(--radius-lg);
+  padding:clamp(34px,5vw,72px) clamp(22px,4vw,56px);text-align:center;
+  background:
+    radial-gradient(90% 130% at 50% 120%,rgba(63,216,255,.22),transparent 62%),
+    linear-gradient(180deg,rgba(32,42,61,.55),rgba(9,14,24,.7));
+}
+.cta-banner::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(to right,rgba(63,216,255,.14) 1px,transparent 1px);
+  background-size:56px 100%;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 60%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 60%,transparent);
+}
+.cta-banner__title{font-size:clamp(26px,3.6vw,48px);font-weight:700;line-height:1.4;position:relative}
+.cta-banner__text{color:var(--text-2);margin:20px auto 0;max-width:60ch;position:relative;line-height:1.95}
+.cta-banner__ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:32px;position:relative}
+
+.site-footer{border-block-start:1px solid var(--line);background:linear-gradient(180deg,rgba(21,29,45,.4),rgba(9,14,24,0));padding-block:clamp(44px,6vw,76px) 24px}
+.footer__grid{display:grid;grid-template-columns:1.5fr .8fr .8fr 1fr;gap:clamp(24px,3vw,44px)}
+.footer__about{max-width:38ch}
+.footer__desc{color:var(--text-2);font-size:var(--fs-sm);line-height:1.95;margin-top:16px}
+.footer__title{font-size:var(--fs-sm);font-weight:600;color:var(--text);margin-bottom:16px}
+.footer__list{display:grid;gap:10px}
+.footer__link{color:var(--text-2);font-size:var(--fs-sm);transition:color .25s var(--ease)}
+.footer__link:hover{color:var(--lime)}
+.footer__socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.footer__social{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;color:var(--text-2);transition:border-color .25s var(--ease),color .25s var(--ease)}
+.footer__social:hover{border-color:rgba(198,255,46,.5);color:var(--lime)}
+.footer__social svg{width:18px;height:18px}
+.footer__bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:clamp(32px,4vw,52px);padding-block-start:22px;border-block-start:1px solid var(--line)}
+.footer__copy{color:var(--text-3);font-size:var(--fs-label)}
+.footer__muted{color:var(--text-3);font-size:var(--fs-label);line-height:1.9}
+.footer__note{max-width:46ch}
+
+.to-top{
+  position:fixed;inset-block-end:22px;inset-inline-start:22px;z-index:70;width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--line-strong);background:rgba(21,29,45,.92);display:grid;place-items:center;cursor:pointer;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .3s var(--ease),transform .3s var(--ease),visibility .3s var(--ease),border-color .25s var(--ease),color .25s var(--ease);
+}
+.to-top.is-visible{opacity:1;visibility:visible;transform:none}
+.to-top:hover{border-color:var(--lime);color:var(--lime)}
+.to-top svg{width:18px;height:18px}
+
+dialog{border:0;padding:0;background:transparent;color:var(--text);max-width:min(760px,92vw);width:100%}
+dialog::backdrop{background:rgba(6,9,15,.74);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.dialog__card{
+  position:relative;background:linear-gradient(180deg,rgba(32,42,61,.98),rgba(15,22,38,.98));
+  border:1px solid var(--line-strong);border-radius:var(--radius-lg);
+  padding:clamp(24px,3.4vw,40px);box-shadow:var(--shadow-soft);max-height:86vh;overflow-y:auto;
+}
+.dialog__close{
+  position:absolute;inset-block-start:18px;inset-inline-end:18px;width:42px;height:42px;border-radius:12px;
+  border:1px solid var(--line);background:rgba(9,14,24,.6);display:grid;place-items:center;cursor:pointer;
+  transition:border-color .25s var(--ease),color .25s var(--ease);
+}
+.dialog__close:hover{border-color:rgba(198,255,46,.5);color:var(--lime)}
+.dialog__close svg{width:18px;height:18px}
+.dialog__eyebrow{font-family:var(--font-en);font-size:var(--fs-label);color:var(--cyan);letter-spacing:.14em}
+.dialog__title{font-size:clamp(21px,2.4vw,30px);font-weight:700;line-height:1.5;margin:12px 0 14px;padding-inline-end:46px}
+.dialog__text{color:var(--text-2);font-size:var(--fs-sm);line-height:2}
+.dialog__section{margin-top:24px}
+.dialog__section-title{font-size:var(--fs-sm);font-weight:600;margin-bottom:12px}
+.dialog__list{display:grid;gap:10px}
+.dialog__item{display:flex;align-items:flex-start;gap:10px;font-size:var(--fs-sm);color:var(--text-2);line-height:1.85}
+.dialog__item::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);flex:none;margin-top:10px}
+.dialog__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.dialog__meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+dialog.dialog--fallback{
+  display:grid;place-items:center;position:fixed;inset:0;max-width:none;width:auto;padding:20px;z-index:130;
+  background:rgba(6,9,15,.78);
+}
+dialog.dialog--fallback .dialog__card{max-width:min(760px,92vw)}
+
+/* ----------------------------------------------------------- 10. Responsive */
+@media (max-width:1100px){
+  .footer__grid{grid-template-columns:1.4fr 1fr 1fr}
+  .footer__grid > :nth-child(4){grid-column:span 3}
+}
+@media (max-width:980px){
+  :root{--header-h:64px;--section-y:clamp(64px,11vw,96px);--hero-track:250vh}
+  .nav__list,.nav__actions{display:none}
+  .nav__toggle{display:flex;justify-self:end}
+  .site-header__inner{grid-template-columns:1fr auto}
+  .brand{justify-self:start}
+  .trust__grid,.growth__grid,.why__grid,.contact__grid{grid-template-columns:1fr}
+  .services__feature{grid-template-columns:1fr}
+  .services__feature .mock{aspect-ratio:16/9}
+  .plans__grid{grid-template-columns:1fr;max-width:620px}
+  .process__list{grid-template-columns:repeat(2,1fr);gap:26px 20px}
+  .process__list::before{display:none}
+  .work-card,.work-card--wide,.work-card--narrow{grid-column:span 12}
+  .hub{max-width:420px}
+  .growth__grid{gap:34px}
+  .hero__channel{padding:7px 11px}
+}
+@media (max-width:760px){
+  :root{--hero-track:230vh}
+  .hero__channels{
+    position:absolute;inset:auto 0 92px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+    padding-inline:var(--gutter);
+  }
+  .hero__channel{position:static;transform:none;opacity:1;padding:6px 10px;font-size:11px}
+  .hero__arrival{display:none}
+  .hero__fallback{position:static;max-width:none;text-align:start;margin-top:16px}
+  .hub__center{width:40%}
+  .growth-node{padding:7px 10px;font-size:11px}
+}
+@media (max-width:640px){
+  :root{--hero-track:215vh;--gutter:18px}
+  .hero__title{margin-bottom:18px}
+  .hero__ctas{flex-direction:column;align-items:stretch;gap:12px}
+  .hero__ctas .btn{width:100%}
+  .hero__micro{letter-spacing:.2em}
+  .form__grid{grid-template-columns:1fr}
+  .process__list{grid-template-columns:1fr}
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .footer__grid > :nth-child(1){grid-column:span 2}
+  .footer__grid > :nth-child(4){grid-column:span 2}
+  .faq__trigger{gap:10px;padding:18px 16px}
+  .faq__question{font-size:var(--fs-body)}
+  .work__filters .chip{font-size:12px;padding:8px 13px}
+  .to-top{inset-block-end:16px;inset-inline-start:16px;width:44px;height:44px}
+  .card__foot .btn{width:100%}
+  .stage-tab{grid-template-columns:auto 1fr;padding:14px 15px}
+  .principles{padding-inline-start:30px}
+  .principle::before{inset-inline-start:-30px}
+}
+@media (max-width:400px){
+  .hero__channel{font-size:10px;padding:5px 8px}
+  .brand__word{letter-spacing:.1em}
+}
+
+/* --------------------------------------------------- 11. Motion preferences */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
+  }
+  .hero__track{height:auto}
+  .hero__sticky{position:relative;height:auto;min-height:88svh;padding:calc(var(--header-h) + 48px) 0 48px}
+  .hero__hub{--hub-y:0%;--hub-scale:.9;opacity:.75;transform:translate(50%,-50%) scale(.9)}
+  .hero__content{transform:none !important;opacity:1 !important;visibility:visible !important}
+  .hero__channel{--node-opacity:1;opacity:1}
+  .hero__hint,.hero__arrival{display:none}
+  .hub__svg path[data-flow],.hero__network path[data-flow]{animation:none}
+  .hero__hub-pulse{display:none}
+}
+/* ------------------------------- 12. Progressive-enhancement & QA additions */
+/* Controls that only work with JavaScript stay out of the way without it */
+.no-js .js-only{display:none !important}
+/* Optional cinematic hero footage (only mounted when a source is configured) */
+.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+/* Wide portfolio card: visual beside text on large screens, stacked on small */
+.work-card--full{grid-column:span 12;flex-direction:row}
+.work-card--full .mock{width:52%;aspect-ratio:16/10;border-block-end:0;border-inline-end:1px solid var(--line)}
+.work-card--full .work-card__body{width:48%}
+@media (max-width:760px){
+  .work-card--full{flex-direction:column}
+  .work-card--full .mock{width:100%;border-inline-end:0;border-block-end:1px solid var(--line)}
+  .work-card--full .work-card__body{width:100%}
+  .hero__fallback{position:absolute;inset:auto var(--gutter) auto var(--gutter);inset-block-start:calc(var(--header-h) + 12px);max-width:none;text-align:center;margin-top:0}
+}
+/* پیام وضعیت فرم: ناحیه اعلان همیشه در DOM می‌ماند و تنها متن آن تغییر می‌کند */
+.form__status:empty{display:none}
+
+/* ------------------------------------------- end of stylesheet ---------- */
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+
+<!-- ============================================================ 01. Navigation -->
+<header class="site-header" id="siteHeader">
+  <div class="container site-header__inner">
+    <nav class="nav" aria-label="ناوبری اصلی">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#services" data-nav-link>خدمات</a></li>
+        <li><a class="nav__link" href="#growth" data-nav-link>راهکارها</a></li>
+        <li><a class="nav__link" href="#work" data-nav-link>نمونه‌کارها</a></li>
+        <li><a class="nav__link" href="#about" data-nav-link>درباره ما</a></li>
+        <li><a class="nav__link" href="#contact" data-nav-link>ارتباط با ما</a></li>
+      </ul>
+    </nav>
+    <a class="brand" href="#hero" aria-label="آوِستورا — بازگشت به ابتدای صفحه">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="9" fill="rgba(63,216,255,.10)" stroke="rgba(63,216,255,.35)"/>
+        <path d="M8.5 22.5 16 8.6l7.5 13.9h-4.1L16 16.2l-3.4 6.3z" fill="#C6FF2E"/>
+        <circle cx="16" cy="24.4" r="1.6" fill="#3FD8FF"/>
+      </svg>
+      <span class="brand__word" dir="ltr">AVESTORA</span>
+    </a>
+    <div class="nav__actions">
+      <a class="btn btn--ghost" href="#work">مشاهده پروژه‌ها</a>
+      <a class="btn btn--lime" href="#contact">شروع همکاری</a>
+    </div>
+    <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="باز کردن منوی ناوبری">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__top">
+      <button class="mobile-menu__close" id="navClose" type="button" aria-label="بستن منوی ناوبری">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-menu__list">
+      <li><a class="mobile-menu__link" href="#services">خدمات</a></li>
+      <li><a class="mobile-menu__link" href="#growth">راهکارها</a></li>
+      <li><a class="mobile-menu__link" href="#work">نمونه‌کارها</a></li>
+      <li><a class="mobile-menu__link" href="#about">درباره ما</a></li>
+      <li><a class="mobile-menu__link" href="#contact">ارتباط با ما</a></li>
+    </ul>
+    <div class="mobile-menu__actions">
+      <a class="btn btn--ghost btn--block" href="#work">مشاهده پروژه‌ها</a>
+      <a class="btn btn--lime btn--block" href="#contact">شروع همکاری</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ================================================= 02. Cinematic hero stage -->
+<section class="hero" id="hero" aria-labelledby="heroTitle">
+  <div class="hero__track" id="heroTrack">
+    <div class="hero__sticky">
+      <div class="hero__scene" aria-hidden="true">
+        <div class="hero__sky"></div>
+        <video class="hero__video" id="heroVideo" muted playsinline preload="metadata" hidden></video>
+        <div class="hero__grid"></div>
+        <svg class="hero__network" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+          <path d="M50 50 Q50 33 50 16"/>
+          <path d="M50 50 Q64 42 78 34"/>
+          <path d="M50 50 Q64 58 78 66"/>
+          <path d="M50 50 Q50 67 50 84"/>
+          <path d="M50 50 Q36 58 22 66"/>
+          <path d="M50 50 Q36 42 22 34"/>
+          <path data-flow d="M22 34 Q36 42 50 50 Q64 42 78 34"/>
+          <path data-flow d="M22 66 Q36 58 50 50 Q64 58 78 66"/>
+        </svg>
+        <div class="hero__hub" id="heroHub">
+          <span class="hero__hub-ring"></span>
+          <span class="hero__hub-ring"></span>
+          <span class="hero__hub-ring"></span>
+          <span class="hero__hub-core"></span>
+          <span class="hero__hub-pulse"></span>
+        </div>
+        <div class="hero__scrim"></div>
+      </div>
+
+      <div class="hero__channels" id="heroChannels">
+        <span class="hero__channel">وب‌سایت</span>
+        <span class="hero__channel">موتورهای جست‌وجو</span>
+        <span class="hero__channel">تبلیغات</span>
+        <span class="hero__channel">شبکه‌های اجتماعی</span>
+        <span class="hero__channel">محتوا</span>
+        <span class="hero__channel">تحلیل داده</span>
+      </div>
+
+      <div class="hero__content" id="heroContent">
+        <p class="eyebrow eyebrow--plain hero__eyebrow">استراتژی | طراحی | رشد</p>
+        <h1 class="hero__title" id="heroTitle"><span>رشد دیجیتال،</span> <span>با یک استاندارد متفاوت.</span></h1>
+        <p class="hero__lead">از شکل‌گیری هویت برند تا طراحی وب‌سایت و اجرای کمپین‌های بازاریابی؛ هر بخش را با یک هدف مشترک پیش می‌بریم: ساختن مسیر بهتر برای رشد کسب‌وکار شما.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--lime" href="#contact">پروژه‌ات را شروع کن</a>
+          <a class="btn btn--ghost" href="#process">مسیر همکاری را ببین</a>
+        </div>
+        <p class="hero__micro">STRATEGY / DESIGN / PERFORMANCE</p>
+      </div>
+
+      <div class="hero__hint" id="heroHint">
+        <span class="hero__hint-glyph" aria-hidden="true"></span>
+        <span>برای ادامه، اسکرول کنید</span>
+      </div>
+
+      <div class="hero__arrival" id="heroArrival" aria-hidden="true">
+        <span class="hero__arrival-label">مسیر رشد، مرحله‌به‌مرحله</span>
+        <ul class="hero__stages">
+          <li class="hero__stage"><span class="hero__stage-dot"></span>شناخت کسب‌وکار</li>
+          <li class="hero__stage"><span class="hero__stage-dot"></span>طراحی زیرساخت</li>
+          <li class="hero__stage"><span class="hero__stage-dot"></span>جذب مخاطب</li>
+          <li class="hero__stage"><span class="hero__stage-dot"></span>تبدیل و بهینه‌سازی</li>
+        </ul>
+      </div>
+
+      <div class="hero__footer-bar"><span class="hero__bar-fill" id="heroBar"></span></div>
+      <p class="hero__fallback" id="heroMediaNote" hidden>تصویر ویدئویی در دسترس نیست؛ نمای ثابت نمایش داده می‌شود.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ 03. Trust & value statement -->
+<section class="section" id="about" aria-labelledby="aboutTitle">
+  <div class="container trust__grid">
+    <div class="reveal">
+      <p class="eyebrow">درباره ما</p>
+      <h2 class="trust__statement" id="aboutTitle"><span>بازاریابی دیجیتال،</span> <span>فقط حضور در فضای آنلاین نیست.</span></h2>
+      <p class="section__lead">هر نقطه تماس با مشتری باید بخشی از یک مسیر مشخص باشد؛ از اولین آشنایی با برند تا بررسی خدمات، اعتمادسازی و اقدام نهایی.</p>
+    </div>
+    <div class="principles reveal">
+      <article class="principle">
+        <p class="principle__num">01</p>
+        <h3 class="principle__title">استراتژی پیش از اجرا</h3>
+        <p class="principle__text">پیش از طراحی یا تبلیغ، مخاطب، هدف و مسیر تبدیل را مشخص می‌کنیم.</p>
+      </article>
+      <article class="principle">
+        <p class="principle__num">02</p>
+        <h3 class="principle__title">طراحی با هدف</h3>
+        <p class="principle__text">تجربه کاربری و هویت بصری را در خدمت فهم بهتر خدمات و تصمیم‌گیری مخاطب قرار می‌دهیم.</p>
+      </article>
+      <article class="principle">
+        <p class="principle__num">03</p>
+        <h3 class="principle__title">بهینه‌سازی مستمر</h3>
+        <p class="principle__text">عملکرد را بررسی می‌کنیم، نقاط ضعف را پیدا می‌کنیم و مسیر رشد را بر اساس داده اصلاح می‌کنیم.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= 04. Services -->
+<section class="section section--tinted" id="services" aria-labelledby="servicesTitle">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">خدمات</p>
+      <h2 class="section__title" id="servicesTitle"><span>راهکارهایی برای ساختن</span> <span>و توسعه رشد دیجیتال</span></h2>
+      <p class="section__lead">از ساخت زیرساخت آنلاین تا جذب مخاطب و بهینه‌سازی عملکرد؛ خدمات در راستای یک هدف تجاری مشخص طراحی می‌شوند.</p>
+    </div>
+
+    <article class="card services__feature reveal">
+      <div>
+        <p class="card__index">01</p>
+        <h3 class="card__title">طراحی وب‌سایت</h3>
+        <p class="card__text">وب‌سایتی طراحی می‌کنیم که هویت برند شما را درست نمایش دهد، استفاده از خدمات را ساده کند و مسیر اقدام مشتری را کوتاه‌تر سازد.</p>
+        <div class="card__foot">
+          <a class="btn btn--ghost" href="#contact"
+             data-dialog-open="serviceDialog" data-panel="service-1">بررسی خدمات طراحی سایت</a>
+        </div>
+      </div>
+      <div class="mock mock--landing" aria-hidden="true">
+        <div class="mock__chrome"><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__url"></span></div>
+        <div class="mock__body">
+          <div class="mock__block mock__block--accent" style="height:74px"></div>
+          <div class="mock__row"><div class="mock__block" style="height:46px"></div><div class="mock__block" style="height:46px"></div></div>
+          <div class="mock__block mock__block--lime" style="height:30px;width:38%"></div>
+          <div class="mock__line mock__line--mid"></div>
+          <div class="mock__line mock__line--short"></div>
+        </div>
+      </div>
+    </article>
+
+    <div class="services__grid">
+      <article class="card reveal">
+        <p class="card__index">02</p>
+        <h3 class="card__title">سئو و رشد ارگانیک</h3>
+        <p class="card__text">برای دیده‌شدن در جست‌وجو، فقط روی کلمات کلیدی تمرکز نمی‌کنیم؛ ساختار سایت، نیاز مخاطب و کیفیت محتوا را هم در نظر می‌گیریم.</p>
+        <div class="card__foot">
+          <a class="btn btn--quiet" href="#contact" data-dialog-open="serviceDialog" data-panel="service-2">بررسی راهکارهای سئو</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <p class="card__index">03</p>
+        <h3 class="card__title">تبلیغات گوگل</h3>
+        <p class="card__text">کمپین تبلیغاتی باید مخاطب مناسب را به صفحه مناسب برساند و امکان ارزیابی هزینه و نتیجه را فراهم کند.</p>
+        <div class="card__foot">
+          <a class="btn btn--quiet" href="#contact" data-dialog-open="serviceDialog" data-panel="service-3">بررسی تبلیغات گوگل</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <p class="card__index">04</p>
+        <h3 class="card__title">بازاریابی اینستاگرام</h3>
+        <p class="card__text">از ایده‌پردازی محتوا تا طراحی مسیر ارتباط با مخاطب، حضور برند در اینستاگرام را هدفمندتر می‌کنیم.</p>
+        <div class="card__foot">
+          <a class="btn btn--quiet" href="#contact" data-dialog-open="serviceDialog" data-panel="service-4">بررسی بازاریابی اینستاگرام</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <p class="card__index">05</p>
+        <h3 class="card__title">هویت برند و طراحی گرافیک</h3>
+        <p class="card__text">هویت بصری باید برند شما را قابل تشخیص کند و در تمام نقاط ارتباطی، تصویری هماهنگ و حرفه‌ای بسازد.</p>
+        <div class="card__foot">
+          <a class="btn btn--quiet" href="#contact" data-dialog-open="serviceDialog" data-panel="service-5">بررسی هویت برند</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <p class="card__index">06</p>
+        <h3 class="card__title">استراتژی محتوا و تولید ویدئو</h3>
+        <p class="card__text">محتوا را با شناخت مخاطب، پیام مشخص و هدف انتشار طراحی می‌کنیم؛ نه صرفاً برای پرکردن تقویم.</p>
+        <div class="card__foot">
+          <a class="btn btn--quiet" href="#contact" data-dialog-open="serviceDialog" data-panel="service-6">بررسی خدمات محتوا</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ 05. Interactive growth model -->
+<section class="section" id="growth" aria-labelledby="growthTitle">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">راهکارها</p>
+      <h2 class="section__title" id="growthTitle"><span>هر کانال،</span> <span>بخشی از یک مسیر بزرگ‌تر است.</span></h2>
+      <p class="section__lead">یک مرحله را انتخاب کنید تا ببینید در آن مرحله کدام بخش‌ها فعال می‌شوند و چه اتفاقی برای مسیر رشد کسب‌وکار می‌افتد.</p>
+    </div>
+
+    <div class="growth__grid">
+      <div class="reveal">
+        <div class="stage-tabs js-only" role="tablist" aria-label="مراحل مسیر رشد">
+          <button class="stage-tab" type="button" role="tab" id="stageTab1" aria-controls="stagePanel1" aria-selected="true" data-stage="1" data-nodes="website,data">
+            <span class="stage-tab__num">01</span><span class="stage-tab__title">شناخت کسب‌وکار</span>
+          </button>
+          <button class="stage-tab" type="button" role="tab" id="stageTab2" aria-controls="stagePanel2" aria-selected="false" tabindex="-1" data-stage="2" data-nodes="website,content">
+            <span class="stage-tab__num">02</span><span class="stage-tab__title">طراحی زیرساخت</span>
+          </button>
+          <button class="stage-tab" type="button" role="tab" id="stageTab3" aria-controls="stagePanel3" aria-selected="false" tabindex="-1" data-stage="3" data-nodes="seo,ads,social">
+            <span class="stage-tab__num">03</span><span class="stage-tab__title">جذب مخاطب</span>
+          </button>
+          <button class="stage-tab" type="button" role="tab" id="stageTab4" aria-controls="stagePanel4" aria-selected="false" tabindex="-1" data-stage="4" data-nodes="website,data,content">
+            <span class="stage-tab__num">04</span><span class="stage-tab__title">تبدیل و بهینه‌سازی</span>
+          </button>
+        </div>
+
+        <div class="stage-panel is-active" id="stagePanel1" role="tabpanel" aria-labelledby="stageTab1" tabindex="0" data-panel-stage="1">
+          <h3 class="stage-panel__title">شناخت کسب‌وکار</h3>
+          <p class="stage-panel__text">مدل کسب‌وکار، مخاطب هدف، رقبا و وضعیت فعلی حضور دیجیتال شما را بررسی می‌کنیم تا تصویر روشنی از نقطه شروع به دست بیاید.</p>
+        </div>
+        <div class="stage-panel" id="stagePanel2" role="tabpanel" aria-labelledby="stageTab2" tabindex="0" data-panel-stage="2">
+          <h3 class="stage-panel__title">طراحی زیرساخت</h3>
+          <p class="stage-panel__text">بر پایه شناخت اولیه، ساختار وب‌سایت، پیام‌ها و مسیرهای ارتباطی ساخته می‌شود؛ زیرساختی که بقیه فعالیت‌ها روی آن اجرا می‌شوند.</p>
+        </div>
+        <div class="stage-panel" id="stagePanel3" role="tabpanel" aria-labelledby="stageTab3" tabindex="0" data-panel-stage="3">
+          <h3 class="stage-panel__title">جذب مخاطب</h3>
+          <p class="stage-panel__text">کانال‌های مناسب — جست‌وجو، تبلیغات و شبکه‌های اجتماعی — با محتوای هدفمند فعال می‌شوند تا مخاطب مرتبط به سایت شما بیاید.</p>
+        </div>
+        <div class="stage-panel" id="stagePanel4" role="tabpanel" aria-labelledby="stageTab4" tabindex="0" data-panel-stage="4">
+          <h3 class="stage-panel__title">تبدیل و بهینه‌سازی</h3>
+          <p class="stage-panel__text">رفتار کاربران اندازه‌گیری می‌شود، نقاط ریزش مشخص می‌شود و بر اساس داده، طراحی، پیام و کمپین‌ها اصلاح می‌شوند.</p>
+        </div>
+        <p class="growth__note">کانال‌ها جدا از هم کار نمی‌کنند؛ خروجی هر مرحله ورودی مرحله بعد است.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="hub">
+          <svg class="hub__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path data-line="website" d="M50 50 Q50 30 50 9"/>
+            <path data-line="seo" d="M50 50 Q68 40 87 29"/>
+            <path data-line="ads" d="M50 50 Q68 60 87 71"/>
+            <path data-line="social" d="M50 50 Q50 70 50 91"/>
+            <path data-line="content" d="M50 50 Q32 60 13 71"/>
+            <path data-line="data" d="M50 50 Q32 40 13 29"/>
+          </svg>
+          <span class="hub__ring" aria-hidden="true"></span>
+          <span class="hub__ring hub__ring--inner" aria-hidden="true"></span>
+          <div class="hub__center">
+            <p class="hub__center-label"><strong>رشد کسب‌وکار</strong>هدف مشترک همه کانال‌ها</p>
+          </div>
+          <span class="growth-node" data-node="website">وب‌سایت</span>
+          <span class="growth-node" data-node="seo">موتورهای جست‌وجو</span>
+          <span class="growth-node" data-node="ads">تبلیغات</span>
+          <span class="growth-node" data-node="social">شبکه‌های اجتماعی</span>
+          <span class="growth-node" data-node="content">محتوا</span>
+          <span class="growth-node" data-node="data">تحلیل داده</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================= 06. Portfolio & selected work -->
+<section class="section section--tinted" id="work" aria-labelledby="workTitle">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">نمونه‌کارها</p>
+      <h2 class="section__title" id="workTitle"><span>طراحی و اجرا،</span> <span>در خدمت یک هدف مشخص.</span></h2>
+      <p class="section__lead">در هر پروژه، تصمیم‌های طراحی و بازاریابی باید با نیاز کسب‌وکار و تجربه مخاطب هماهنگ باشند. نمونه‌های زیر مفهومی هستند و برای نمایش رویکرد ما طراحی شده‌اند.</p>
+    </div>
+
+    <div class="work__filters reveal" role="group" aria-label="فیلتر دسته‌بندی نمونه‌کارها">
+      <button class="chip" type="button" aria-pressed="true" data-filter="all">همه پروژه‌ها</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="web">طراحی سایت</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="branding">برندینگ</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="marketing">بازاریابی دیجیتال</button>
+      <button class="chip" type="button" aria-pressed="false" data-filter="social">محتوای شبکه‌های اجتماعی</button>
+    </div>
+    <p class="work-empty" id="workStatus" role="status" aria-live="polite"></p>
+
+    <div class="work__grid" id="workGrid">
+      <article class="work-card work-card--wide reveal" data-category="web">
+        <div class="mock mock--landing" aria-hidden="true">
+          <div class="mock__chrome"><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__url"></span></div>
+          <div class="mock__body">
+            <div class="mock__block mock__block--accent" style="height:58px"></div>
+            <div class="mock__row"><div class="mock__block" style="height:38px"></div><div class="mock__block" style="height:38px"></div><div class="mock__block mock__block--lime" style="height:38px"></div></div>
+            <div class="mock__line mock__line--mid"></div>
+          </div>
+        </div>
+        <div class="work-card__body">
+          <div class="work-card__meta">
+            <span class="badge">طراحی سایت</span>
+            <span class="badge">پروژه مفهومی</span>
+          </div>
+          <h3 class="work-card__title">طراحی صفحه فرود برای یک برند خدماتی</h3>
+          <p class="work-card__text">ساختاری که در چند ثانیه روشن می‌کند این برند چه کاری انجام می‌دهد، برای چه کسی و چرا باید انتخاب شود.</p>
+          <div class="card__foot">
+            <button class="btn btn--ghost js-only" type="button" data-dialog-open="projectDialog" data-panel="project-1">جزئیات پروژه</button>
+            <a class="link-arrow" href="#contact">گفت‌وگو درباره پروژه‌ای مشابه
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card work-card--narrow reveal" data-category="web">
+        <div class="mock mock--shop" aria-hidden="true">
+          <div class="mock__chrome"><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__url"></span></div>
+          <div class="mock__body">
+            <div class="mock__grid">
+              <span class="mock__tile"></span><span class="mock__tile"></span><span class="mock__tile"></span>
+              <span class="mock__tile"></span><span class="mock__tile"></span><span class="mock__tile"></span>
+            </div>
+            <div class="mock__line mock__line--short"></div>
+          </div>
+        </div>
+        <div class="work-card__body">
+          <div class="work-card__meta">
+            <span class="badge">طراحی سایت</span>
+            <span class="badge">پروژه مفهومی</span>
+          </div>
+          <h3 class="work-card__title">بازطراحی تجربه کاربری یک فروشگاه آنلاین</h3>
+          <p class="work-card__text">کوتاه‌کردن مسیر انتخاب محصول تا تکمیل سفارش و کاهش سردرگمی در صفحات دسته‌بندی.</p>
+          <div class="card__foot">
+            <button class="btn btn--ghost js-only" type="button" data-dialog-open="projectDialog" data-panel="project-2">جزئیات پروژه</button>
+            <a class="link-arrow" href="#contact">گفت‌وگو درباره پروژه‌ای مشابه
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card work-card--narrow reveal" data-category="branding">
+        <div class="mock mock--brand" aria-hidden="true">
+          <div class="mock__chrome"><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__url"></span></div>
+          <div class="mock__body">
+            <div class="mock__swatches">
+              <span class="mock__swatch mock__swatch--lime"></span>
+              <span class="mock__swatch mock__swatch--cyan"></span>
+              <span class="mock__swatch mock__swatch--navy"></span>
+              <span class="mock__swatch mock__swatch--ink"></span>
+            </div>
+            <div class="mock__block" style="height:22px;width:64%"></div>
+            <div class="mock__line"></div>
+            <div class="mock__line mock__line--short"></div>
+          </div>
+        </div>
+        <div class="work-card__body">
+          <div class="work-card__meta">
+            <span class="badge">برندینگ</span>
+            <span class="badge">پروژه مفهومی</span>
+          </div>
+          <h3 class="work-card__title">سیستم هویت بصری یک برند مدرن</h3>
+          <p class="work-card__text">زبان بصری یکپارچه در وب‌سایت، شبکه‌های اجتماعی و محتوای تبلیغاتی، با راهنمای استفاده.</p>
+          <div class="card__foot">
+            <button class="btn btn--ghost js-only" type="button" data-dialog-open="projectDialog" data-panel="project-3">جزئیات پروژه</button>
+            <a class="link-arrow" href="#contact">گفت‌وگو درباره پروژه‌ای مشابه
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card work-card--wide reveal" data-category="marketing">
+        <div class="mock mock--campaign" aria-hidden="true">
+          <div class="mock__chrome"><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__url"></span></div>
+          <div class="mock__body">
+            <div class="mock__row"><div class="mock__block mock__block--accent" style="height:52px"></div><div class="mock__block" style="height:52px"></div></div>
+            <div class="mock__row"><div class="mock__block" style="height:34px"></div><div class="mock__block mock__block--lime" style="height:34px"></div><div class="mock__block" style="height:34px"></div></div>
+            <div class="mock__line mock__line--mid"></div>
+          </div>
+        </div>
+        <div class="work-card__body">
+          <div class="work-card__meta">
+            <span class="badge">بازاریابی دیجیتال</span>
+            <span class="badge">پروژه مفهومی</span>
+          </div>
+          <h3 class="work-card__title">ساختار کمپین تبلیغاتی و صفحه فرود اختصاصی</h3>
+          <p class="work-card__text">گروه‌بندی مخاطب بر اساس قصد جست‌وجو، تعیین پیام هر گروه و طراحی صفحه فرودی که همان پیام را ادامه می‌دهد.</p>
+          <div class="card__foot">
+            <button class="btn btn--ghost js-only" type="button" data-dialog-open="projectDialog" data-panel="project-4">جزئیات پروژه</button>
+            <a class="link-arrow" href="#contact">گفت‌وگو درباره پروژه‌ای مشابه
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card work-card--full reveal" data-category="social">
+        <div class="mock mock--content" aria-hidden="true">
+          <div class="mock__chrome"><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__dot"></span><span class="mock__url"></span></div>
+          <div class="mock__body">
+            <div class="mock__phone">
+              <div class="mock__play"></div>
+              <div class="mock__line"></div>
+              <div class="mock__line mock__line--short"></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card__body">
+          <div class="work-card__meta">
+            <span class="badge">محتوای شبکه‌های اجتماعی</span>
+            <span class="badge">پروژه مفهومی</span>
+          </div>
+          <h3 class="work-card__title">طراحی سیستم محتوایی یک کسب‌وکار دیجیتال</h3>
+          <p class="work-card__text">ساختار ستون‌های محتوایی، قالب‌های تکرارشدنی و تقویم انتشار، به‌گونه‌ای که تولید محتوا به یک فرایند روشن تبدیل شود.</p>
+          <div class="card__foot">
+            <button class="btn btn--ghost js-only" type="button" data-dialog-open="projectDialog" data-panel="project-5">جزئیات پروژه</button>
+            <a class="link-arrow" href="#contact">گفت‌وگو درباره پروژه‌ای مشابه
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== 07. Process -->
+<section class="section" id="process" aria-labelledby="processTitle">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">مسیر همکاری</p>
+      <h2 class="section__title" id="processTitle"><span>از ایده تا اجرا،</span> <span>با یک مسیر روشن.</span></h2>
+    </div>
+    <ol class="process__list" id="processList">
+      <li class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <p class="process-step__num">01</p>
+        <h3 class="process-step__title">شناخت و تحلیل</h3>
+        <p class="process-step__text">نیاز کسب‌وکار، مخاطب هدف، رقبا و وضعیت فعلی حضور دیجیتال را بررسی می‌کنیم.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <p class="process-step__num">02</p>
+        <h3 class="process-step__title">تدوین استراتژی</h3>
+        <p class="process-step__text">اولویت‌ها، پیام برند، کانال‌های ارتباطی و معیارهای ارزیابی را مشخص می‌کنیم.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <p class="process-step__num">03</p>
+        <h3 class="process-step__title">طراحی و اجرا</h3>
+        <p class="process-step__text">راهکار انتخاب‌شده را با تمرکز بر کیفیت طراحی، عملکرد فنی و تجربه مخاطب پیاده‌سازی می‌کنیم.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-step__dot" aria-hidden="true"></span>
+        <p class="process-step__num">04</p>
+        <h3 class="process-step__title">اندازه‌گیری و بهینه‌سازی</h3>
+        <p class="process-step__text">نتایج را بررسی می‌کنیم و بر اساس داده و اهداف پروژه، اصلاحات لازم را انجام می‌دهیم.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ======================================================== 08. Why AVESTORA -->
+<section class="section section--tinted" id="why" aria-labelledby="whyTitle">
+  <div class="container why__grid">
+    <div class="reveal">
+      <p class="eyebrow">چرا آوِستورا</p>
+      <h2 class="section__title" id="whyTitle"><span>چرا یک رویکرد یکپارچه</span> <span>اهمیت دارد؟</span></h2>
+      <p class="section__lead">وقتی طراحی، محتوا و تبلیغات جدا از هم اجرا شوند، هر بخش انرژی خودش را دارد اما خروجی نهایی پراکنده می‌شود؛ مخاطب در یک نقطه جذب می‌شود و در نقطه‌ای دیگر مسیر را رها می‌کند.</p>
+      <div class="compare">
+        <div class="compare__item">
+          <p class="compare__label">اجرای پراکنده</p>
+          <p class="compare__text">هر فعالیت هدف خودش را دنبال می‌کند و مشخص نیست کدام بخش واقعاً به نتیجه کمک کرده است.</p>
+        </div>
+        <div class="compare__item compare__item--positive">
+          <p class="compare__label">اجرای یکپارچه</p>
+          <p class="compare__text">همه بخش‌ها یک هدف مشترک دارند و نتیجه هرکدام قابل اندازه‌گیری و مقایسه است.</p>
+        </div>
+      </div>
+    </div>
+    <div class="values reveal">
+      <article class="value">
+        <h3 class="value__title">نگاه یکپارچه</h3>
+        <p class="value__text">طراحی، محتوا و تبلیغات در یک مسیر مشترک قرار می‌گیرند.</p>
+      </article>
+      <article class="value">
+        <h3 class="value__title">تصمیم‌گیری شفاف</h3>
+        <p class="value__text">هدف هر فعالیت و معیار ارزیابی آن از ابتدا روشن می‌شود.</p>
+      </article>
+      <article class="value">
+        <h3 class="value__title">توجه به تجربه مشتری</h3>
+        <p class="value__text">مسیر کاربر از اولین برخورد تا اقدام نهایی بررسی می‌شود.</p>
+      </article>
+      <article class="value">
+        <h3 class="value__title">بهینه‌سازی بر اساس داده</h3>
+        <p class="value__text">به‌جای تکیه بر حدس، از اطلاعات قابل اندازه‌گیری برای اصلاح مسیر استفاده می‌کنیم.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =================================================== 09. Engagement options -->
+<section class="section" id="plans" aria-labelledby="plansTitle">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">مدل همکاری</p>
+      <h2 class="section__title" id="plansTitle"><span>همکاری،</span> <span>متناسب با نیاز کسب‌وکار شما.</span></h2>
+      <p class="section__lead">سه چارچوب همکاری برای موقعیت‌های مختلف؛ انتخاب هرکدام از یک نقطه شروع مشخص شکل می‌گیرد. محدوده دقیق، زمان‌بندی و هزینه بر اساس نیاز پروژه تعیین می‌شود.</p>
+    </div>
+
+    <div class="plans__grid">
+      <article class="card plan reveal">
+        <h3 class="plan__title">شروع هدفمند</h3>
+        <p class="plan__text">برای کسب‌وکارهایی که به شفافیت استراتژیک و یک نقشه راه عملی نیاز دارند.</p>
+        <ul class="plan__list">
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>بررسی اولیه نیاز</li>
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>تعیین اولویت‌ها</li>
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>پیشنهاد مسیر اجرا</li>
+        </ul>
+        <div class="plan__foot">
+          <button class="btn btn--ghost btn--block" type="button" data-plan="consult">درخواست پیشنهاد همکاری</button>
+        </div>
+      </article>
+
+      <article class="card plan plan--featured reveal">
+        <h3 class="plan__title">ساخت زیرساخت دیجیتال</h3>
+        <p class="plan__text">برای کسب‌وکارهایی که به وب‌سایت، صفحه فرود، سیستم برند یا زیرساخت دیجیتال پایه نیاز دارند.</p>
+        <ul class="plan__list">
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>تعریف نیازهای پروژه</li>
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>طراحی و اجرای راهکار منتخب</li>
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>بررسی کیفیت و تحویل</li>
+        </ul>
+        <div class="plan__foot">
+          <button class="btn btn--lime btn--block" type="button" data-plan="build">درخواست پیشنهاد همکاری</button>
+        </div>
+      </article>
+
+      <article class="card plan reveal">
+        <h3 class="plan__title">رشد و بازاریابی مستمر</h3>
+        <p class="plan__text">برای کسب‌وکارهایی که به اجرای هماهنگ بازاریابی و بهینه‌سازی پیوسته نیاز دارند.</p>
+        <ul class="plan__list">
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>برنامه‌ریزی بازاریابی</li>
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>اجرای فعالیت‌های توافق‌شده</li>
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>بررسی شاخص‌های عملکرد</li>
+          <li class="plan__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>اصلاح دوره‌ای مسیر</li>
+        </ul>
+        <div class="plan__foot">
+          <button class="btn btn--ghost btn--block" type="button" data-plan="growth">درخواست پیشنهاد همکاری</button>
+        </div>
+      </article>
+    </div>
+
+    <p class="plans__note">این سه مورد یک چارچوب پیشنهادی برای شروع همکاری است، نه فهرست قیمت. محدوده کار، زمان‌بندی و هزینه پس از بررسی نیاز پروژه مشخص می‌شود.</p>
+  </div>
+</section>
+
+<!-- ================================================================== 10. FAQ -->
+<section class="section section--tinted" id="faq" aria-labelledby="faqTitle">
+  <div class="container">
+    <div class="section__head section__head--center reveal">
+      <p class="eyebrow eyebrow--plain">سؤالات متداول</p>
+      <h2 class="section__title" id="faqTitle">سؤالات متداول</h2>
+    </div>
+    <div class="faq reveal" id="faqList">
+      <details class="faq__item" name="avestora-faq">
+        <summary class="faq__trigger">
+          <span class="faq__num">01</span>
+          <span class="faq__question">آیا می‌توان فقط یکی از خدمات را سفارش داد؟</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel"><div class="faq__panel-inner">
+          <p class="faq__answer">بله. همکاری می‌تواند فقط شامل یک خدمت مشخص باشد؛ مثلاً طراحی وب‌سایت یا سئو. با این حال اگر هدف نهایی رشد فروش یا جذب سرنخ است، بهتر است هم‌زمان بررسی شود کدام بخش‌ها باید در کنار هم دیده شوند تا نتیجه پایدار بماند.</p>
+        </div></div>
+      </details>
+      <details class="faq__item" name="avestora-faq">
+        <summary class="faq__trigger">
+          <span class="faq__num">02</span>
+          <span class="faq__question">هزینه طراحی سایت یا خدمات دیجیتال مارکتینگ چگونه تعیین می‌شود؟</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel"><div class="faq__panel-inner">
+          <p class="faq__answer">هزینه به محدوده کار بستگی دارد: تعداد صفحات یا بخش‌ها، سطح سفارشی‌سازی طراحی، نیاز به تولید محتوا، مدت اجرا و میزان پشتیبانی. پس از بررسی اولیه و مشخص‌شدن نیازها، پیشنهاد مرحله‌به‌مرحله ارائه می‌شود. هیچ عدد ثابتی وجود ندارد که برای همه پروژه‌ها معتبر باشد.</p>
+        </div></div>
+      </details>
+      <details class="faq__item" name="avestora-faq">
+        <summary class="faq__trigger">
+          <span class="faq__num">03</span>
+          <span class="faq__question">برای شروع همکاری چه اطلاعاتی لازم است؟</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel"><div class="faq__panel-inner">
+          <p class="faq__answer">حوزه فعالیت کسب‌وکار، هدف اصلی (فروش، برندسازی یا جذب سرنخ)، وضعیت فعلی وب‌سایت و شبکه‌های اجتماعی، تصویر مخاطب هدف و محدوده زمانی مورد نظر. اگر بخشی از این اطلاعات هنوز روشن نیست، در جلسه اول بررسی و تعیین می‌شود.</p>
+        </div></div>
+      </details>
+      <details class="faq__item" name="avestora-faq">
+        <summary class="faq__trigger">
+          <span class="faq__num">04</span>
+          <span class="faq__question">آیا امکان همکاری مستمر وجود دارد؟</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel"><div class="faq__panel-inner">
+          <p class="faq__answer">بله. برای کسب‌وکارهایی که به تولید پیوسته محتوا، اجرای تبلیغات یا بهینه‌سازی مداوم نیاز دارند، همکاری ماهانه با برنامه مشخص، گزارش عملکرد و بازبینی دوره‌ای تعریف می‌شود.</p>
+        </div></div>
+      </details>
+      <details class="faq__item" name="avestora-faq">
+        <summary class="faq__trigger">
+          <span class="faq__num">05</span>
+          <span class="faq__question">آیا نتایج بازاریابی تضمین‌شده هستند؟</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel"><div class="faq__panel-inner">
+          <p class="faq__answer">نه. هیچ آژانس مسئولی نمی‌تواند رتبه مشخص، تعداد فروش یا هزینه دقیق هر نتیجه را تضمین کند؛ چون نتیجه به رقابت بازار، قیمت‌گذاری، کیفیت محصول و شرایط بیرونی هم وابسته است. تعهد ما شفافیت در روش، کیفیت اجرا و اندازه‌گیری درست است تا تصمیم‌ها بر پایه داده گرفته شوند.</p>
+        </div></div>
+      </details>
+      <details class="faq__item" name="avestora-faq">
+        <summary class="faq__trigger">
+          <span class="faq__num">06</span>
+          <span class="faq__question">فرایند دریافت پیشنهاد و شروع پروژه چگونه است؟</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__panel"><div class="faq__panel-inner">
+          <p class="faq__answer">فرم ارتباط را تکمیل می‌کنید، درخواست بررسی می‌شود و در یک گفت‌وگوی کوتاه، نیازها و محدوده کار روشن می‌شود. سپس پیشنهاد مسیر، اولویت‌ها و زمان‌بندی ارائه می‌شود تا بدانید هر مرحله چه چیزی به دست می‌آورد.</p>
+        </div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================= 11. Contact & lead -->
+<section class="section" id="contact" aria-labelledby="contactTitle">
+  <div class="container contact__grid">
+    <div class="reveal">
+      <p class="eyebrow">ارتباط با ما</p>
+      <h2 class="section__title" id="contactTitle"><span>بیایید مسیر رشد</span> <span>کسب‌وکارتان را طراحی کنیم.</span></h2>
+      <p class="section__lead">درباره کسب‌وکارتان، هدفی که دنبال می‌کنید و چالشی که می‌خواهید حل شود بنویسید. بر اساس اطلاعات اولیه، مسیر مناسب همکاری را مشخص می‌کنیم.</p>
+
+      <ul class="contact__links" id="contactLinks"></ul>
+      <p class="contact__note" id="contactNote">کانال‌های ارتباطی مستقیم در حال تکمیل است. برای شروع همکاری، فرم روبه‌رو را تکمیل کنید تا در اولین فرصت بررسی شود.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="form-card">
+        <form id="contactForm" novalidate>
+          <p class="form__status" id="planNote" data-state="info" hidden></p>
+          <div class="form__grid">
+            <div class="field">
+              <label class="field__label" for="cfName">نام و نام خانوادگی <span class="field__req" aria-hidden="true">*</span></label>
+              <input id="cfName" name="name" type="text" autocomplete="name" required aria-describedby="cfNameError">
+              <p class="field__error" id="cfNameError" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cfBusiness">نام کسب‌وکار <span class="field__req" aria-hidden="true">*</span></label>
+              <input id="cfBusiness" name="business" type="text" autocomplete="organization" required aria-describedby="cfBusinessError">
+              <p class="field__error" id="cfBusinessError" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cfPhone">شماره تماس <span class="field__req" aria-hidden="true">*</span></label>
+              <input id="cfPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="+98 912 000 0000" required aria-describedby="cfPhoneError">
+              <p class="field__error" id="cfPhoneError" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cfEmail">ایمیل <span class="field__optional">(اختیاری)</span></label>
+              <input id="cfEmail" name="email" type="email" inputmode="email" autocomplete="email" dir="ltr" placeholder="name@example.com" aria-describedby="cfEmailError">
+              <p class="field__error" id="cfEmailError" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cfService">نوع خدمت مورد نیاز <span class="field__req" aria-hidden="true">*</span></label>
+              <select id="cfService" name="service" required aria-describedby="cfServiceError">
+                <option value="">یک گزینه را انتخاب کنید</option>
+                <option value="website">طراحی وب‌سایت</option>
+                <option value="seo">سئو و رشد ارگانیک</option>
+                <option value="ads">تبلیغات گوگل</option>
+                <option value="instagram">بازاریابی اینستاگرام</option>
+                <option value="branding">هویت برند و طراحی گرافیک</option>
+                <option value="content">استراتژی محتوا و تولید ویدئو</option>
+                <option value="consult">نیاز به مشاوره دارم</option>
+              </select>
+              <p class="field__error" id="cfServiceError" hidden></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cfBudget">بودجه تقریبی <span class="field__optional">(اختیاری)</span></label>
+              <select id="cfBudget" name="budget">
+                <option value="unknown">هنوز مشخص نیست</option>
+                <option value="consult">ترجیح می‌دهم مشورت کنم</option>
+                <option value="small">محدوده کوچک</option>
+                <option value="medium">محدوده متوسط</option>
+                <option value="large">محدوده گسترده</option>
+              </select>
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="cfDetails">توضیحات پروژه <span class="field__req" aria-hidden="true">*</span></label>
+              <textarea id="cfDetails" name="details" required aria-describedby="cfDetailsError cfDetailsHint"></textarea>
+              <p class="field__hint" id="cfDetailsHint">چه هدفی دارید، چه چیزی الان مانع رسیدن به آن است و چه زمانی مدنظر شماست؟</p>
+              <p class="field__error" id="cfDetailsError" hidden></p>
+            </div>
+            <div class="field field--check">
+              <input id="cfConsent" name="consent" type="checkbox" required aria-describedby="cfConsentError">
+              <label class="field__label" for="cfConsent">موافقم اطلاعات این فرم برای بررسی درخواست و تماس با من نگهداری و استفاده شود. <span class="field__req" aria-hidden="true">*</span></label>
+              <p class="field__error" id="cfConsentError" hidden></p>
+            </div>
+          </div>
+          <div class="form__foot">
+            <button class="btn btn--lime" type="submit" id="cfSubmit">ارسال درخواست</button>
+            <p class="field__hint">پاسخ‌دادن به این فرم به‌معنای تعهد به همکاری نیست.</p>
+          </div>
+          <p class="form__status" id="formStatus" role="status" aria-live="polite" hidden></p>
+        </form>
+
+        <div class="form-success" id="formSuccess" role="status" tabindex="-1" hidden>
+          <span class="form-success__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <h3>درخواست شما ثبت شد</h3>
+          <p>اطلاعات ارسال شد. اگر کانال ارتباطی مستقیم فعال باشد، در اولین فرصت از همان طریق پیگیری می‌شود.</p>
+          <button class="btn btn--ghost" type="button" id="formReset">ارسال درخواست دیگر</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================== 12. Final conversion -->
+<section class="section" id="cta" aria-labelledby="ctaTitle">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <h2 class="cta-banner__title" id="ctaTitle">مرحله بعدی رشد شما از کجا شروع می‌شود؟</h2>
+      <p class="cta-banner__text">با مشخص‌کردن هدف و نیاز کسب‌وکارتان، می‌توانیم درباره مسیر مناسب طراحی و بازاریابی دیجیتال گفت‌وگو کنیم.</p>
+      <div class="cta-banner__ctas">
+        <a class="btn btn--lime" href="#contact">درخواست مشاوره اولیه</a>
+        <a class="btn btn--ghost" href="#services">مشاهده خدمات</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================== 13. Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a class="brand" href="#hero" aria-label="آوِستورا — بازگشت به ابتدای صفحه">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <rect width="32" height="32" rx="9" fill="rgba(63,216,255,.10)" stroke="rgba(63,216,255,.35)"/>
+            <path d="M8.5 22.5 16 8.6l7.5 13.9h-4.1L16 16.2l-3.4 6.3z" fill="#C6FF2E"/>
+            <circle cx="16" cy="24.4" r="1.6" fill="#3FD8FF"/>
+          </svg>
+          <span class="brand__word" dir="ltr">AVESTORA</span>
+        </a>
+        <p class="footer__desc">آوِستورا یک آژانس دیجیتال است که استراتژی، طراحی و اجرای بازاریابی را در یک مسیر واحد برای رشد کسب‌وکارها به کار می‌گیرد.</p>
+        <ul class="footer__socials" id="footerSocials" hidden></ul>
+      </div>
+      <nav aria-label="خدمات">
+        <h2 class="footer__title">خدمات</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#services">طراحی وب‌سایت</a></li>
+          <li><a class="footer__link" href="#services">سئو و رشد ارگانیک</a></li>
+          <li><a class="footer__link" href="#services">تبلیغات گوگل</a></li>
+          <li><a class="footer__link" href="#services">بازاریابی اینستاگرام</a></li>
+          <li><a class="footer__link" href="#services">هویت برند و طراحی گرافیک</a></li>
+          <li><a class="footer__link" href="#services">استراتژی محتوا و تولید ویدئو</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="ناوبری صفحه">
+        <h2 class="footer__title">صفحه‌ها</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#about">درباره ما</a></li>
+          <li><a class="footer__link" href="#growth">راهکارها</a></li>
+          <li><a class="footer__link" href="#work">نمونه‌کارها</a></li>
+          <li><a class="footer__link" href="#process">مسیر همکاری</a></li>
+          <li><a class="footer__link" href="#plans">مدل همکاری</a></li>
+          <li><a class="footer__link" href="#faq">سؤالات متداول</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="footer__title">ارتباط</h2>
+        <ul class="footer__list" id="footerContact"></ul>
+        <p class="footer__muted" id="footerContactFallback">برای شروع گفت‌وگو، <a class="footer__link" href="#contact">فرم ارتباط</a> را تکمیل کنید.</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© <span class="num" id="footerYear"></span> AVESTORA — همه حقوق محفوظ است.</p>
+      <button class="btn btn--quiet" type="button" id="toTopInline">بازگشت به بالای صفحه</button>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" id="toTop" aria-label="بازگشت به بالای صفحه">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<!-- ============================================================== Dialogs -->
+<dialog class="dialog" id="serviceDialog" aria-label="جزئیات خدمات">
+  <div class="dialog__card">
+    <button class="dialog__close" type="button" data-dialog-close aria-label="بستن پنجره">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <div class="dialog__panel" data-panel="service-1" hidden>
+      <p class="dialog__eyebrow">01 / خدمات</p>
+      <h2 class="dialog__title">طراحی وب‌سایت</h2>
+      <p class="dialog__text">وب‌سایت شما اولین جایی است که مخاطب درباره کیفیت کار شما تصمیم می‌گیرد. ما ساختار، محتوا و طراحی را طوری می‌چینیم که بازدیدکننده سریع بفهمد این کسب‌وکار چه کاری انجام می‌دهد و قدم بعدی چه چیزی است.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">چه چیزی تحویل داده می‌شود؟</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">طراحی UI/UX</li>
+          <li class="dialog__item">طراحی و توسعه وب‌سایت</li>
+          <li class="dialog__item">طراحی صفحات فرود</li>
+          <li class="dialog__item">بهینه‌سازی تجربه کاربری</li>
+        </ul>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="website">شروع همکاری درباره طراحی سایت</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="service-2" hidden>
+      <p class="dialog__eyebrow">02 / خدمات</p>
+      <h2 class="dialog__title">سئو و رشد ارگانیک</h2>
+      <p class="dialog__text">دیده‌شدن در جست‌وجو نتیجه یک کار پیوسته است: ساختار فنی درست، محتوایی که به سؤال واقعی مخاطب پاسخ می‌دهد و صفحاتی که برای موتور جست‌وجو قابل فهم‌اند. کار را از جایی شروع می‌کنیم که بیشترین اثر را دارد.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">چه چیزی تحویل داده می‌شود؟</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">بررسی فنی سایت</li>
+          <li class="dialog__item">تحقیق کلمات کلیدی</li>
+          <li class="dialog__item">استراتژی محتوایی</li>
+          <li class="dialog__item">بهینه‌سازی صفحات</li>
+        </ul>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="seo">شروع همکاری درباره سئو</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="service-3" hidden>
+      <p class="dialog__eyebrow">03 / خدمات</p>
+      <h2 class="dialog__title">تبلیغات گوگل</h2>
+      <p class="dialog__text">در تبلیغات پرداختی، ساختار کمپین و کیفیت صفحه فرود تعیین می‌کند بودجه شما صرف مخاطب مرتبط می‌شود یا نه. ساختار را بر پایه قصد جست‌وجو می‌سازیم و با اندازه‌گیری، مسیر را اصلاح می‌کنیم.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">چه چیزی تحویل داده می‌شود؟</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">طراحی ساختار کمپین</li>
+          <li class="dialog__item">تحقیق کلمات کلیدی تبلیغاتی</li>
+          <li class="dialog__item">برنامه‌ریزی بودجه</li>
+          <li class="dialog__item">بررسی کیفیت صفحات فرود</li>
+          <li class="dialog__item">تحلیل و بهینه‌سازی عملکرد</li>
+        </ul>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="ads">شروع همکاری درباره تبلیغات گوگل</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="service-4" hidden>
+      <p class="dialog__eyebrow">04 / خدمات</p>
+      <h2 class="dialog__title">بازاریابی اینستاگرام</h2>
+      <p class="dialog__text">حضور در اینستاگرام وقتی اثر دارد که پیام برند، قالب محتوا و ریتم انتشار از قبل مشخص باشد. ما این سیستم را می‌سازیم تا تولید محتوا قابل تکرار و قابل ارزیابی شود.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">چه چیزی تحویل داده می‌شود؟</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">استراتژی محتوایی</li>
+          <li class="dialog__item">تقویم انتشار</li>
+          <li class="dialog__item">سناریونویسی</li>
+          <li class="dialog__item">طراحی و تدوین محتوا</li>
+          <li class="dialog__item">برنامه‌ریزی تبلیغات و همکاری‌ها</li>
+        </ul>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="instagram">شروع همکاری درباره اینستاگرام</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="service-5" hidden>
+      <p class="dialog__eyebrow">05 / خدمات</p>
+      <h2 class="dialog__title">هویت برند و طراحی گرافیک</h2>
+      <p class="dialog__text">برند قابل تشخیص، برندی است که در همه نقاط تماس یکسان دیده شود. زبان بصری، رنگ، تایپوگرافی و قالب‌های محتوایی را به‌صورت یک سیستم قابل استفاده تعریف می‌کنیم.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">چه چیزی تحویل داده می‌شود؟</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">طراحی لوگو</li>
+          <li class="dialog__item">سیستم رنگ و تایپوگرافی</li>
+          <li class="dialog__item">طراحی گرافیک تبلیغاتی</li>
+          <li class="dialog__item">قالب‌های محتوایی</li>
+          <li class="dialog__item">راهنمای هویت بصری</li>
+        </ul>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="branding">شروع همکاری درباره هویت برند</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="service-6" hidden>
+      <p class="dialog__eyebrow">06 / خدمات</p>
+      <h2 class="dialog__title">استراتژی محتوا و تولید ویدئو</h2>
+      <p class="dialog__text">محتوا وقتی کار می‌کند که مخاطب مشخصی را هدف بگیرد و پیامی روشن داشته باشد. از ایده و سناریو تا تولید و انتشار، همه را بر پایه هدف کسب‌وکار می‌چینیم.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">چه چیزی تحویل داده می‌شود؟</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">ایده‌پردازی و سناریونویسی</li>
+          <li class="dialog__item">تدوین ویدئو</li>
+          <li class="dialog__item">طراحی کاور و محتوای شبکه‌های اجتماعی</li>
+          <li class="dialog__item">برنامه‌ریزی انتشار</li>
+          <li class="dialog__item">تحلیل عملکرد محتوا</li>
+        </ul>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="content">شروع همکاری درباره محتوا</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="dialog" id="projectDialog" aria-label="جزئیات پروژه">
+  <div class="dialog__card">
+    <button class="dialog__close" type="button" data-dialog-close aria-label="بستن پنجره">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <div class="dialog__panel" data-panel="project-1" hidden>
+      <p class="dialog__eyebrow">پروژه مفهومی / طراحی سایت</p>
+      <h2 class="dialog__title">صفحه فرود برای یک برند خدماتی</h2>
+      <p class="dialog__text">هدف از این نمونه، طراحی مسیری است که در چند ثانیه اول به سه سؤال مخاطب پاسخ دهد: این برند چه کاری انجام می‌دهد، برای چه کسی مناسب است و چرا باید انتخاب شود.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">رویکرد اجرا</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">تعیین پیام اصلی و جایگاه آن در بالای صفحه</li>
+          <li class="dialog__item">ساخت بخش اعتمادسازی بدون ادعای اثبات‌نشده</li>
+          <li class="dialog__item">طراحی مسیر اقدام با یک درخواست مشخص</li>
+          <li class="dialog__item">آماده‌سازی ساختار برای اندازه‌گیری رفتار کاربران</li>
+        </ul>
+      </div>
+      <div class="dialog__meta"><span class="badge">پروژه مفهومی</span><span class="badge">نمونه نمایشی</span></div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="website">گفت‌وگو درباره پروژه مشابه</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="project-2" hidden>
+      <p class="dialog__eyebrow">پروژه مفهومی / طراحی سایت</p>
+      <h2 class="dialog__title">بازطراحی تجربه کاربری فروشگاه آنلاین</h2>
+      <p class="dialog__text">فروشگاه‌های آنلاین معمولاً در مرحله انتخاب و مقایسه محصول مخاطب را از دست می‌دهند. این نمونه روی ساده‌کردن همان مرحله تمرکز دارد.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">رویکرد اجرا</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">بازچینش صفحات دسته‌بندی و فیلترها</li>
+          <li class="dialog__item">شفاف‌سازی اطلاعات کلیدی محصول</li>
+          <li class="dialog__item">کوتاه‌کردن مسیر تا تکمیل سفارش</li>
+          <li class="dialog__item">طراحی وضعیت‌های خالی، بارگذاری و خطا</li>
+        </ul>
+      </div>
+      <div class="dialog__meta"><span class="badge">پروژه مفهومی</span><span class="badge">نمونه نمایشی</span></div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="website">گفت‌وگو درباره پروژه مشابه</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="project-3" hidden>
+      <p class="dialog__eyebrow">پروژه مفهومی / برندینگ</p>
+      <h2 class="dialog__title">سیستم هویت بصری یک برند مدرن</h2>
+      <p class="dialog__text">هویت بصری زمانی کارآمد است که بتواند در قالب‌های مختلف تکرار شود و باز هم قابل تشخیص بماند؛ از وب‌سایت تا پست شبکه اجتماعی و بنر تبلیغاتی.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">رویکرد اجرا</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">تعیین پالت رنگ و سلسله‌مراتب تایپوگرافی</li>
+          <li class="dialog__item">ساخت قالب‌های تکرارشدنی محتوا</li>
+          <li class="dialog__item">تدوین راهنمای کوتاه استفاده</li>
+          <li class="dialog__item">آزمایش سیستم روی نقاط تماس اصلی</li>
+        </ul>
+      </div>
+      <div class="dialog__meta"><span class="badge">پروژه مفهومی</span><span class="badge">نمونه نمایشی</span></div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="branding">گفت‌وگو درباره پروژه مشابه</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="project-4" hidden>
+      <p class="dialog__eyebrow">پروژه مفهومی / بازاریابی دیجیتال</p>
+      <h2 class="dialog__title">ساختار کمپین تبلیغاتی و صفحه فرود اختصاصی</h2>
+      <p class="dialog__text">کمپین اثربخش، پیامش را به مخاطب مناسب می‌رساند و بعد همان پیام را در صفحه فرود ادامه می‌دهد. این نمونه حول همین پیوستگی طراحی شده است.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">رویکرد اجرا</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">گروه‌بندی مخاطب بر اساس قصد جست‌وجو</li>
+          <li class="dialog__item">تعیین پیام و صفحه مقصد برای هر گروه</li>
+          <li class="dialog__item">تعریف شاخص‌های سنجش از ابتدا</li>
+          <li class="dialog__item">بررسی دوره‌ای ساختار و اصلاح آن</li>
+        </ul>
+      </div>
+      <div class="dialog__meta"><span class="badge">پروژه مفهومی</span><span class="badge">نمونه نمایشی</span></div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="ads">گفت‌وگو درباره پروژه مشابه</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+
+    <div class="dialog__panel" data-panel="project-5" hidden>
+      <p class="dialog__eyebrow">پروژه مفهومی / محتوای شبکه‌های اجتماعی</p>
+      <h2 class="dialog__title">طراحی سیستم محتوایی یک کسب‌وکار دیجیتال</h2>
+      <p class="dialog__text">وقتی تولید محتوا به یک فرایند روشن تبدیل شود، انتشار پیوسته آسان‌تر می‌شود. این نمونه روی ساختار و تکرارپذیری تمرکز دارد.</p>
+      <div class="dialog__section">
+        <h3 class="dialog__section-title">رویکرد اجرا</h3>
+        <ul class="dialog__list">
+          <li class="dialog__item">تعیین ستون‌های محتوایی و پیام هر ستون</li>
+          <li class="dialog__item">ساخت قالب‌های بصری تکرارشدنی</li>
+          <li class="dialog__item">طراحی تقویم انتشار و چرخه بازبینی</li>
+          <li class="dialog__item">بررسی عملکرد محتوا بر پایه شاخص‌های مشخص</li>
+        </ul>
+      </div>
+      <div class="dialog__meta"><span class="badge">پروژه مفهومی</span><span class="badge">نمونه نمایشی</span></div>
+      <div class="dialog__actions">
+        <button class="btn btn--lime" type="button" data-dialog-contact data-preselect-service="content">گفت‌وگو درباره پروژه مشابه</button>
+        <button class="btn btn--ghost" type="button" data-dialog-close>بستن</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* =====================================================================
+   AVESTORA — front-end behaviour
+   همه مقادیر قابل تنظیم در CONFIG قرار دارند.
+   هیچ کلید محرمانه‌ای نباید در این فایل نوشته شود.
+   ===================================================================== */
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------- CONFIG */
+  var CONFIG = {
+    /* ویدئوی اختیاری هیرو (mp4/webm). اگر خالی باشد، نمای ثابت سینمایی CSS نمایش داده می‌شود. */
+    HERO_VIDEO_URL: '',
+    /* اگر ویدئو تنظیم شود: با اسکرول صفحه جلو/عقب می‌رود. برای پخش آرام، false کنید. */
+    HERO_VIDEO_SCRUB: true,
+
+    /* آدرس دریافت فرم. تا خالی باشد، هیچ پیامی ارسال نمی‌شود و سایت این را صادقانه اعلام می‌کند.
+       نمونه: 'https://api.example.com/contact'  (درخواست POST با بدنه JSON) */
+    FORM_ENDPOINT: '',
+    FORM_TIMEOUT_MS: 12000,
+
+    /* راه‌های ارتباطی. هر مقدار خالی بماند، آن گزینه به‌طور کامل پنهان می‌شود. */
+    CONTACT: {
+      EMAIL: '',
+      PHONE: '',
+      WHATSAPP: '',
+      INSTAGRAM: '',
+      LINKEDIN: ''
+    }
+  };
+
+  /* ----------------------------------------------------------- Utilities */
+  function clamp(value, min, max) {
+    return value < min ? min : (value > max ? max : value);
+  }
+  function mapRange(value, inMin, inMax, outMin, outMax) {
+    if (inMax === inMin) return outMin;
+    var t = clamp((value - inMin) / (inMax - inMin), 0, 1);
+    return outMin + (outMax - outMin) * t;
+  }
+  function reducedMotion() {
+    return typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  function scrollBehaviour() {
+    return reducedMotion() ? 'auto' : 'smooth';
+  }
+  function toLatinDigits(value) {
+    return String(value)
+      .replace(/[\u06F0-\u06F9]/g, function (d) { return String.fromCharCode(d.charCodeAt(0) - 0x06F0 + 48); })
+      .replace(/[\u0660-\u0669]/g, function (d) { return String.fromCharCode(d.charCodeAt(0) - 0x0660 + 48); });
+  }
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(String(value).trim());
+  }
+  function isValidPhone(value) {
+    var raw = toLatinDigits(value).trim();
+    if (!/^\+?[0-9\s\-()]{7,26}$/.test(raw)) return false;
+    var digits = raw.replace(/\D/g, '');
+    return digits.length >= 8 && digits.length <= 15;
+  }
+  function telHref(value) {
+    return 'tel:' + toLatinDigits(value).replace(/[^\d+]/g, '');
+  }
+  function whatsappHref(value) {
+    var raw = String(value).trim();
+    if (/^https?:\/\//i.test(raw)) return raw;
+    var digits = toLatinDigits(raw).replace(/\D/g, '');
+    return digits.length >= 8 ? 'https://wa.me/' + digits : null;
+  }
+  function profileHref(base, value) {
+    var raw = String(value).trim();
+    if (!raw) return null;
+    if (/^https?:\/\//i.test(raw)) return raw;
+    return base + raw.replace(/^@/, '');
+  }
+
+  /* ------------------------------------------------------ Small SVG icons */
+  var ICONS = {
+    mail: '<path d="M3 6h18v12H3z"/><path d="m3.5 7 8.5 6 8.5-6"/>',
+    phone: '<path d="M5 3h4l2 5-2.4 1.5a12 12 0 0 0 5.9 5.9L16 13l5 2v4a1 1 0 0 1-1.1 1A17 17 0 0 1 4 4.1 1 1 0 0 1 5 3z"/>',
+    whatsapp: '<path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.2-4.6A9 9 0 1 1 21 12z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/>',
+    instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.4 6.6h.01"/>',
+    linkedin: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V17M8 7.2v.01M12 17v-3.6a2.2 2.2 0 0 1 4.4 0V17"/>'
+  };
+  function iconSvg(name) {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">' +
+      (ICONS[name] || '') + '</svg>';
+  }
+
+  /* ------------------------------------------------------- Shared helpers */
+  function selectService(value) {
+    if (!value) return;
+    var select = document.getElementById('cfService');
+    if (!select) return;
+    var exists = Array.prototype.some.call(select.options, function (option) { return option.value === value; });
+    if (!exists) return;
+    select.value = value;
+    setFieldError({ id: 'cfService', error: 'cfServiceError' }, '');
+  }
+  function setFieldError(field, message) {
+    var input = document.getElementById(field.id);
+    var error = document.getElementById(field.error);
+    if (error) {
+      error.textContent = message || '';
+      error.hidden = !message;
+    }
+    if (input) {
+      var wrap = input.closest ? input.closest('.field') : null;
+      if (wrap) wrap.classList.toggle('is-invalid', !!message);
+      if (message) input.setAttribute('aria-invalid', 'true');
+      else input.removeAttribute('aria-invalid');
+    }
+    return !message;
+  }
+  function focusContact() {
+    var section = document.getElementById('contact');
+    if (section) section.scrollIntoView({ behavior: scrollBehaviour(), block: 'start' });
+    if (!window.matchMedia || !window.matchMedia('(min-width: 760px)').matches) return;
+    var first = document.getElementById('cfName');
+    if (!first) return;
+    window.setTimeout(function () { first.focus({ preventScroll: true }); }, reducedMotion() ? 0 : 620);
+  }
+
+  /* ------------------------------------------------------- 1. Navigation */
+  function initNavigation() {
+    var header = document.getElementById('siteHeader');
+    if (!header) return;
+    var links = Array.prototype.slice.call(document.querySelectorAll('[data-nav-link]'));
+    var sections = [];
+    links.forEach(function (link) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) sections.push({ link: link, section: target });
+    });
+    var ticking = false;
+    function update() {
+      ticking = false;
+      header.classList.toggle('is-scrolled', window.scrollY > 12);
+      var probe = window.innerHeight * 0.34;
+      var current = null;
+      sections.forEach(function (entry) {
+        var rect = entry.section.getBoundingClientRect();
+        if (rect.top <= probe && rect.bottom > probe) current = entry.link;
+      });
+      sections.forEach(function (entry) {
+        if (entry.link === current) entry.link.setAttribute('aria-current', 'true');
+        else entry.link.removeAttribute('aria-current');
+      });
+    }
+    function schedule() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    }
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    update();
+  }
+
+  /* ------------------------------------------------------ 2. Mobile menu */
+  function initMobileMenu() {
+    var header = document.getElementById('siteHeader');
+    var toggle = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    var closeBtn = document.getElementById('navClose');
+    if (!header || !toggle || !menu) return;
+
+    function isOpen() { return header.classList.contains('is-menu-open'); }
+    function openMenu() {
+      header.classList.add('is-menu-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'بستن منوی ناوبری');
+      document.body.classList.add('is-locked');
+      var first = menu.querySelector('button, a');
+      if (first) first.focus();
+    }
+    function closeMenu(returnFocus) {
+      if (!isOpen()) return;
+      header.classList.remove('is-menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'باز کردن منوی ناوبری');
+      document.body.classList.remove('is-locked');
+      if (returnFocus) toggle.focus();
+    }
+    toggle.addEventListener('click', function () {
+      if (isOpen()) closeMenu(true); else openMenu();
+    });
+    if (closeBtn) closeBtn.addEventListener('click', function () { closeMenu(true); });
+    menu.addEventListener('click', function (event) {
+      var link = event.target.closest ? event.target.closest('a') : null;
+      if (link) closeMenu(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && isOpen()) closeMenu(true);
+    });
+    window.addEventListener('resize', function () {
+      if (isOpen() && window.innerWidth > 980) closeMenu(false);
+    });
+  }
+
+  /* ------------------------------------------------- 3. Optional hero media */
+  function initHeroMedia() {
+    var video = document.getElementById('heroVideo');
+    var note = document.getElementById('heroMediaNote');
+    if (!video || !CONFIG.HERO_VIDEO_URL) return null;
+
+    var ready = false;
+    var seeking = false;
+    var pending = null;
+
+    function fail() {
+      video.hidden = true;
+      if (note) note.hidden = false;
+    }
+    function seek(time) {
+      var duration = video.duration;
+      if (!ready || !isFinite(duration) || duration <= 0) return;
+      if (seeking) { pending = time; return; }
+      var target = clamp(time, 0, Math.max(0, duration - 0.06));
+      if (Math.abs(video.currentTime - target) < 0.04) return;
+      seeking = true;
+      try { video.currentTime = target; } catch (error) { seeking = false; }
+    }
+
+    video.hidden = false;
+    video.addEventListener('loadedmetadata', function () {
+      ready = isFinite(video.duration) && video.duration > 0;
+    });
+    video.addEventListener('seeked', function () {
+      seeking = false;
+      if (pending !== null) {
+        var next = pending;
+        pending = null;
+        seek(next);
+      }
+    });
+    video.addEventListener('error', fail);
+    video.src = CONFIG.HERO_VIDEO_URL;
+    video.load();
+
+    if (reducedMotion() || !CONFIG.HERO_VIDEO_SCRUB) {
+      /* بدون اسکرول-اسکراب: پخش آرام و بی‌صدا در پس‌زمینه */
+      video.loop = true;
+      var playing = video.play();
+      if (playing && typeof playing.catch === 'function') playing.catch(function () { /* پخش خودکار مجاز نبود */ });
+      return null;
+    }
+    return {
+      setProgress: function (progress) {
+        if (!ready) return;
+        seek(progress * (video.duration - 0.06));
+      }
+    };
+  }
+
+  /* -------------------------------------------------- 4. Hero scroll stage */
+  function initHeroScroll() {
+    var track = document.getElementById('heroTrack');
+    var content = document.getElementById('heroContent');
+    if (!track || !content) return;
+
+    var sticky = track.querySelector('.hero__sticky');
+    var hub = document.getElementById('heroHub');
+    var bar = document.getElementById('heroBar');
+    var hint = document.getElementById('heroHint');
+    var arrival = document.getElementById('heroArrival');
+    var channels = Array.prototype.slice.call(document.querySelectorAll('#heroChannels .hero__channel'));
+    var stages = Array.prototype.slice.call(document.querySelectorAll('#heroArrival .hero__stage'));
+    var media = null;
+    try { media = initHeroMedia(); } catch (error) { media = null; }
+
+    if (reducedMotion()) return; /* نمای ثابت، بدون اسکرول-اسکراب */
+
+    if (sticky) sticky.style.perspective = '1500px';
+    if (hub) hub.style.transition = 'none';
+
+    var trackTop = 0;
+    var trackHeight = 0;
+    var viewportHeight = 0;
+    var ringLayout = true;
+    var frame = 0;
+    var scheduled = false;
+
+    function measure() {
+      var rect = track.getBoundingClientRect();
+      trackTop = rect.top + window.scrollY;
+      trackHeight = track.offsetHeight || 1;
+      viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+      ringLayout = !window.matchMedia || window.matchMedia('(min-width: 761px)').matches;
+    }
+
+    function render() {
+      scheduled = false;
+      var progress = clamp((window.scrollY - trackTop) / Math.max(1, trackHeight - viewportHeight), 0, 1);
+
+      /* متن اصلی: عقب‌رفتن آرام در عمق صحنه */
+      var back = mapRange(progress, 0, 0.62, 0, 1);
+      var fade = mapRange(progress, 0.18, 0.66, 1, 0);
+      content.style.transform =
+        'translate3d(0,' + (-7 * back).toFixed(2) + 'vh,' + (-430 * back).toFixed(1) + 'px) ' +
+        'rotateX(' + (12 * back).toFixed(2) + 'deg) scale(' + (1 - 0.16 * back).toFixed(3) + ')';
+      content.style.opacity = fade.toFixed(3);
+      content.style.visibility = fade < 0.02 ? 'hidden' : 'visible';
+
+      /* مرکز رشد: از پایین صحنه به مرکز می‌آید */
+      if (hub) {
+        var hubT = mapRange(progress, 0.2, 0.84, 0, 1);
+        hub.style.setProperty('--hub-y', (9 - 9 * hubT).toFixed(2) + '%');
+        hub.style.setProperty('--hub-scale', (0.55 + 0.8 * hubT).toFixed(3));
+        hub.style.opacity = (0.38 + 0.62 * hubT).toFixed(3);
+      }
+
+      /* کانال‌ها: ورود تدریجی و روشن‌شدن مرحله‌به‌مرحله */
+      channels.forEach(function (channel, index) {
+        var appear = clamp((progress - (0.05 + index * 0.055)) / 0.26, 0, 1);
+        if (ringLayout) channel.style.setProperty('--node-opacity', (0.32 + 0.68 * appear).toFixed(3));
+        else channel.style.removeProperty('--node-opacity');
+        channel.classList.toggle('is-active', progress >= 0.3 + index * 0.05);
+      });
+
+      if (hint) hint.style.setProperty('--hint-opacity', mapRange(progress, 0, 0.08, 1, 0).toFixed(3));
+      if (bar) bar.style.setProperty('--progress', (progress * 100).toFixed(2) + '%');
+      if (arrival) arrival.style.setProperty('--arrival-opacity', mapRange(progress, 0.72, 0.94, 0, 1).toFixed(3));
+      stages.forEach(function (stage, index) {
+        stage.classList.toggle('is-on', progress >= 0.72 + index * 0.06);
+      });
+
+      if (media) media.setProgress(progress);
+    }
+
+    function schedule() {
+      if (scheduled) return;
+      scheduled = true;
+      frame = window.requestAnimationFrame(render);
+    }
+    function remeasure() {
+      measure();
+      schedule();
+    }
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', remeasure);
+    window.addEventListener('orientationchange', remeasure);
+    window.addEventListener('load', remeasure);
+    measure();
+    render();
+    if (frame) window.cancelAnimationFrame(frame);
+    frame = 0;
+    scheduled = false;
+  }
+
+  /* ------------------------------------------------ 5. Interactive growth */
+  function initGrowthModel() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.stage-tab'));
+    if (!tabs.length) return;
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.stage-panel'));
+    var nodes = Array.prototype.slice.call(document.querySelectorAll('.growth-node'));
+    var lines = Array.prototype.slice.call(document.querySelectorAll('.hub__svg path'));
+
+    function select(index, moveFocus) {
+      tabs.forEach(function (tab, i) {
+        var on = i === index;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+        if (on && moveFocus) tab.focus();
+      });
+      var key = String(index + 1);
+      panels.forEach(function (panel) {
+        panel.classList.toggle('is-active', panel.getAttribute('data-panel-stage') === key);
+      });
+      var active = (tabs[index].getAttribute('data-nodes') || '').split(',').filter(Boolean);
+      nodes.forEach(function (node) {
+        node.classList.toggle('is-active', active.indexOf(node.getAttribute('data-node')) !== -1);
+      });
+      lines.forEach(function (line) {
+        line.classList.toggle('is-active', active.indexOf(line.getAttribute('data-line')) !== -1);
+      });
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(i, false); });
+      tab.addEventListener('keydown', function (event) {
+        var rtl = window.getComputedStyle(document.documentElement).direction === 'rtl';
+        var next = null;
+        if (event.key === 'ArrowDown') next = i + 1;
+        else if (event.key === 'ArrowUp') next = i - 1;
+        else if (event.key === 'ArrowLeft') next = rtl ? i + 1 : i - 1;
+        else if (event.key === 'ArrowRight') next = rtl ? i - 1 : i + 1;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        if (next === null) return;
+        event.preventDefault();
+        select((next + tabs.length) % tabs.length, true);
+      });
+    });
+    select(0, false);
+  }
+
+  /* --------------------------------------------------- 6. Portfolio filters */
+  function initPortfolio() {
+    var grid = document.getElementById('workGrid');
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
+    if (!grid || !buttons.length) return;
+    var items = Array.prototype.slice.call(grid.querySelectorAll('[data-category]'));
+    var status = document.getElementById('workStatus');
+
+    function apply(filter, announce) {
+      var shown = 0;
+      items.forEach(function (item) {
+        var match = filter === 'all' || item.getAttribute('data-category') === filter;
+        item.hidden = !match;
+        if (match) shown += 1;
+      });
+      buttons.forEach(function (button) {
+        button.setAttribute('aria-pressed', button.getAttribute('data-filter') === filter ? 'true' : 'false');
+      });
+      if (status && announce) {
+        status.textContent = shown ? shown + ' نمونه نمایش داده می‌شود.' : 'در این دسته نمونه‌ای ثبت نشده است.';
+      }
+    }
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () { apply(button.getAttribute('data-filter'), true); });
+    });
+    if (status) status.textContent = '';
+  }
+
+  /* ----------------------------------------------- 7. FAQ (single open item) */
+  function initFaq() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.faq__item'));
+    if (items.length < 2) return;
+    if ('name' in document.createElement('details')) return; /* مرورگر خودش تک‌بازشو را مدیریت می‌کند */
+    items.forEach(function (item) {
+      item.addEventListener('toggle', function () {
+        if (!item.open) return;
+        items.forEach(function (other) {
+          if (other !== item && other.open) other.open = false;
+        });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------- 8. Dialogs */
+  function initDialogs() {
+    var dialogs = Array.prototype.slice.call(document.querySelectorAll('dialog'));
+    if (!dialogs.length) return;
+    var supportsModal = typeof HTMLDialogElement !== 'undefined' &&
+      typeof HTMLDialogElement.prototype.showModal === 'function';
+    var lastTrigger = null;
+
+    function openDialog(dialog, panelKey, trigger) {
+      if (panelKey) {
+        Array.prototype.forEach.call(dialog.querySelectorAll('[data-panel]'), function (panel) {
+          panel.hidden = panel.getAttribute('data-panel') !== panelKey;
+        });
+      }
+      lastTrigger = trigger || null;
+      if (supportsModal) {
+        if (!dialog.open) dialog.showModal();
+      } else {
+        dialog.classList.add('dialog--fallback');
+        dialog.setAttribute('open', '');
+        document.body.classList.add('is-locked');
+      }
+      var card = dialog.querySelector('.dialog__card');
+      if (card) card.scrollTop = 0;
+    }
+
+    function closeDialog(dialog) {
+      if (supportsModal) {
+        if (dialog.open) dialog.close();
+      } else {
+        dialog.classList.remove('dialog--fallback');
+        dialog.removeAttribute('open');
+        document.body.classList.remove('is-locked');
+      }
+      if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+      lastTrigger = null;
+    }
+
+    document.addEventListener('click', function (event) {
+      var target = event.target;
+      var opener = target.closest ? target.closest('[data-dialog-open]') : null;
+      if (opener) {
+        var dialog = document.getElementById(opener.getAttribute('data-dialog-open'));
+        if (!dialog) return;
+        event.preventDefault();
+        openDialog(dialog, opener.getAttribute('data-panel'), opener);
+        return;
+      }
+      var closer = target.closest ? target.closest('[data-dialog-close]') : null;
+      if (closer) {
+        var owner = closer.closest('dialog');
+        if (owner) {
+          event.preventDefault();
+          closeDialog(owner);
+        }
+        return;
+      }
+      var contact = target.closest ? target.closest('[data-dialog-contact]') : null;
+      if (contact) {
+        var host = contact.closest('dialog');
+        var service = contact.getAttribute('data-preselect-service');
+        if (host) closeDialog(host);
+        selectService(service);
+        focusContact();
+      }
+    });
+
+    dialogs.forEach(function (dialog) {
+      dialog.addEventListener('click', function (event) {
+        if (event.target === dialog) closeDialog(dialog);
+      });
+      dialog.addEventListener('close', function () {
+        if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+        lastTrigger = null;
+      });
+      dialog.addEventListener('cancel', function () {
+        if (!supportsModal) closeDialog(dialog);
+      });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key !== 'Escape') return;
+      dialogs.forEach(function (dialog) {
+        if (!supportsModal && dialog.hasAttribute('open')) closeDialog(dialog);
+      });
+    });
+  }
+
+  /* -------------------------------------------------- 9. Engagement plans */
+  var PLAN_INFO = {
+    consult: { label: 'شروع هدفمند', service: 'consult' },
+    build: { label: 'ساخت زیرساخت دیجیتال', service: 'website' },
+    growth: { label: 'رشد و بازاریابی مستمر', service: 'seo' }
+  };
+  var selectedPlan = '';
+
+  function initPlans() {
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-plan]'));
+    if (!buttons.length) return;
+    var note = document.getElementById('planNote');
+    if (note) note.removeAttribute('hidden');
+
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var info = PLAN_INFO[button.getAttribute('data-plan')];
+        if (!info) return;
+        selectedPlan = info.label;
+        selectService(info.service);
+        if (note) {
+          note.setAttribute('data-state', 'info');
+          note.textContent = 'مدل همکاری انتخابی: «' + info.label + '». اگر خدمت مشخص دیگری مدنظر دارید، آن را در فهرست بالا تغییر دهید.';
+        }
+        focusContact();
+      });
+    });
+  }
+
+  /* --------------------------------------------- 10. Contact channels */
+  function initContactChannels() {
+    var list = document.getElementById('contactLinks');
+    var note = document.getElementById('contactNote');
+    var footerList = document.getElementById('footerContact');
+    var footerFallback = document.getElementById('footerContactFallback');
+    var socials = document.getElementById('footerSocials');
+    if (!list) return;
+
+    var channels = [];
+    var contact = CONFIG.CONTACT;
+    if (contact.EMAIL) {
+      channels.push({ icon: 'mail', label: 'ایمیل', value: contact.EMAIL, href: 'mailto:' + contact.EMAIL });
+    }
+    if (contact.PHONE) {
+      channels.push({ icon: 'phone', label: 'تلفن', value: contact.PHONE, href: telHref(contact.PHONE), ltr: true });
+    }
+    var wa = contact.WHATSAPP ? whatsappHref(contact.WHATSAPP) : null;
+    if (wa) {
+      channels.push({ icon: 'whatsapp', label: 'واتساپ', value: 'شروع گفت‌وگو در واتساپ', href: wa, external: true });
+    }
+    var instagram = contact.INSTAGRAM ? profileHref('https://instagram.com/', contact.INSTAGRAM) : null;
+    if (instagram) {
+      channels.push({ icon: 'instagram', label: 'اینستاگرام', value: contact.INSTAGRAM, href: instagram, external: true });
+    }
+    var linkedin = contact.LINKEDIN ? profileHref('https://www.linkedin.com/in/', contact.LINKEDIN) : null;
+    if (linkedin) {
+      channels.push({ icon: 'linkedin', label: 'لینکدین', value: contact.LINKEDIN, href: linkedin, external: true });
+    }
+
+    if (!channels.length) return; /* چیزی تنظیم نشده: پیام جایگزین نمایش داده می‌شود */
+
+    if (note) note.hidden = true;
+
+    channels.forEach(function (channel) {
+      var item = document.createElement('li');
+      item.innerHTML = '<a class="contact__link" href="' + channel.href + '"' +
+        (channel.external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +
+        iconSvg(channel.icon) + '<span><span class="contact__link-label">' + channel.label + '</span>' +
+        '<span class="contact__link-value' + (channel.ltr ? ' ltr' : '') + '">' + channel.value + '</span></span></a>';
+      list.appendChild(item);
+    });
+
+    if (footerList) {
+      channels.forEach(function (channel) {
+        var item = document.createElement('li');
+        item.innerHTML = '<a class="footer__link" href="' + channel.href + '"' +
+          (channel.external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + channel.label + '</a>';
+        footerList.appendChild(item);
+      });
+      if (footerFallback) footerFallback.hidden = true;
+    }
+
+    var socialChannels = [
+      { key: 'INSTAGRAM', icon: 'instagram', label: 'اینستاگرام', base: 'https://instagram.com/' },
+      { key: 'LINKEDIN', icon: 'linkedin', label: 'لینکدین', base: 'https://www.linkedin.com/in/' }
+    ];
+    if (socials) {
+      socialChannels.forEach(function (social) {
+        var href = contact[social.key] ? profileHref(social.base, contact[social.key]) : null;
+        if (!href) return;
+        var item = document.createElement('li');
+        item.innerHTML = '<a class="footer__social" href="' + href + '" target="_blank" rel="noopener noreferrer" ' +
+          'aria-label="' + social.label + ' آوِستورا">' + iconSvg(social.icon) + '</a>';
+        socials.appendChild(item);
+      });
+      if (socials.children.length) socials.hidden = false;
+    }
+  }
+
+  /* ---------------------------------------------------- 11. Contact form */
+  function initContactForm() {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+    var status = document.getElementById('formStatus');
+    var success = document.getElementById('formSuccess');
+    var submit = document.getElementById('cfSubmit');
+    var resetBtn = document.getElementById('formReset');
+    var consentInput = document.getElementById('cfConsent');
+    var busy = false;
+
+    if (status) status.removeAttribute('hidden');
+
+    var FIELDS = [
+      { id: 'cfName', error: 'cfNameError', validate: function (v) { return v.trim().length >= 3 ? '' : 'نام و نام خانوادگی را کامل بنویسید.'; } },
+      { id: 'cfBusiness', error: 'cfBusinessError', validate: function (v) { return v.trim().length >= 2 ? '' : 'نام کسب‌وکار را وارد کنید.'; } },
+      { id: 'cfPhone', error: 'cfPhoneError', validate: function (v) { return isValidPhone(v) ? '' : 'شماره تماس معتبر وارد کنید؛ می‌تواند با کد کشور (+98) شروع شود.'; } },
+      { id: 'cfEmail', error: 'cfEmailError', validate: function (v) { return !v.trim() || isValidEmail(v) ? '' : 'ایمیلی که نوشتید معتبر به نظر نمی‌رسد.'; } },
+      { id: 'cfService', error: 'cfServiceError', validate: function (v) { return v ? '' : 'نوع خدمت مورد نیاز را انتخاب کنید.'; } },
+      { id: 'cfDetails', error: 'cfDetailsError', validate: function (v) { return v.trim().length >= 20 ? '' : 'کمی بیشتر توضیح دهید (حداقل ۲۰ نویسه) تا مسیر مناسب پیشنهاد شود.'; } }
+    ];
+
+    function setStatus(state, message) {
+      if (!status) return;
+      status.textContent = message || '';
+      if (state) status.setAttribute('data-state', state);
+    }
+    function setBusy(value) {
+      busy = value;
+      if (!submit) return;
+      submit.disabled = value;
+      submit.textContent = value ? 'در حال ارسال…' : 'ارسال درخواست';
+      submit.setAttribute('aria-busy', value ? 'true' : 'false');
+    }
+    function validateConsent() {
+      var ok = !!(consentInput && consentInput.checked);
+      var error = document.getElementById('cfConsentError');
+      if (error) {
+        error.textContent = ok ? '' : 'برای ارسال فرم، تأیید این مورد لازم است.';
+        error.hidden = ok;
+      }
+      if (consentInput) {
+        if (ok) consentInput.removeAttribute('aria-invalid');
+        else consentInput.setAttribute('aria-invalid', 'true');
+      }
+      return ok;
+    }
+    function collect() {
+      var data = new FormData(form);
+      var out = {};
+      data.forEach(function (value, key) {
+        out[key] = typeof value === 'string' ? value.trim() : value;
+      });
+      out.consent = !!(consentInput && consentInput.checked);
+      if (selectedPlan) out.plan = selectedPlan;
+      out.page = window.location.href;
+      out.submitted_at = new Date().toISOString();
+      return out;
+    }
+    function alternativeText() {
+      var parts = [];
+      if (CONFIG.CONTACT.EMAIL) parts.push('ایمیل ' + CONFIG.CONTACT.EMAIL);
+      if (CONFIG.CONTACT.PHONE) parts.push('تلفن ' + CONFIG.CONTACT.PHONE);
+      if (CONFIG.CONTACT.WHATSAPP) parts.push('واتساپ');
+      if (!parts.length) return 'برای اطلاع از زمان فعال‌شدن این بخش، بعداً دوباره سر بزنید.';
+      return 'در این فاصله می‌توانید از راه‌های ارتباطی مستقیم استفاده کنید: ' + parts.join('، ') + '.';
+    }
+
+    FIELDS.forEach(function (field) {
+      var input = document.getElementById(field.id);
+      if (!input) return;
+      input.addEventListener('blur', function () { setFieldError(field, field.validate(input.value)); });
+      input.addEventListener('input', function () {
+        if (input.getAttribute('aria-invalid') === 'true') setFieldError(field, field.validate(input.value));
+      });
+      input.addEventListener('change', function () {
+        if (input.getAttribute('aria-invalid') === 'true') setFieldError(field, field.validate(input.value));
+      });
+    });
+    if (consentInput) {
+      consentInput.addEventListener('change', function () {
+        if (consentInput.checked) validateConsent();
+      });
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (busy) return;
+
+      var invalid = [];
+      FIELDS.forEach(function (field) {
+        var input = document.getElementById(field.id);
+        if (!input) return;
+        if (!setFieldError(field, field.validate(input.value))) invalid.push(input);
+      });
+      if (!validateConsent() && consentInput) invalid.push(consentInput);
+
+      if (invalid.length) {
+        setStatus('error', 'فرم کامل نیست. موارد مشخص‌شده را اصلاح کنید و دوباره ارسال کنید.');
+        invalid[0].focus();
+        return;
+      }
+
+      setStatus('info', '');
+
+      if (!CONFIG.FORM_ENDPOINT) {
+        /* هیچ سروری برای دریافت فرم تنظیم نشده است: ارسال انجام نمی‌شود و سایت این را صریح می‌گوید. */
+        setStatus('info', 'ارسال آنلاین فرم در این نسخه فعال نشده است، بنابراین پیام شما ارسال نشد. ' + alternativeText());
+        return;
+      }
+
+      setBusy(true);
+      var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timer = null;
+      if (controller) timer = window.setTimeout(function () { controller.abort(); }, CONFIG.FORM_TIMEOUT_MS);
+
+      fetch(CONFIG.FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(collect()),
+        signal: controller ? controller.signal : undefined
+      }).then(function (response) {
+        if (timer) window.clearTimeout(timer);
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        form.hidden = true;
+        if (status) status.textContent = '';
+        if (success) {
+          success.hidden = false;
+          success.focus();
+        }
+      }).catch(function (error) {
+        if (timer) window.clearTimeout(timer);
+        if (error && error.name === 'AbortError') {
+          setStatus('error', 'پاسخی از سرور دریافت نشد و زمان انتظار به پایان رسید. اتصال اینترنت را بررسی کنید و دوباره تلاش کنید.');
+        } else {
+          setStatus('error', 'ارسال پیام انجام نشد. ممکن است اتصال شبکه یا سرور دریافت فرم مشکل داشته باشد؛ لطفاً دوباره تلاش کنید.');
+        }
+      }).then(function () {
+        setBusy(false);
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        form.reset();
+        form.hidden = false;
+        if (success) success.hidden = true;
+        FIELDS.forEach(function (field) { setFieldError(field, ''); });
+        validateConsent();
+        setStatus('info', '');
+        var first = document.getElementById('cfName');
+        if (first) first.focus();
+      });
+    }
+  }
+
+  /* ----------------------------------------------------- 12. Back to top */
+  function initBackToTop() {
+    var button = document.getElementById('toTop');
+    var inline = document.getElementById('toTopInline');
+    function toTop() {
+      window.scrollTo({ top: 0, behavior: scrollBehaviour() });
+    }
+    if (inline) inline.addEventListener('click', toTop);
+    if (!button) return;
+    button.addEventListener('click', toTop);
+    var ticking = false;
+    function update() {
+      ticking = false;
+      button.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.9);
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    update();
+  }
+
+  /* ------------------------------------------------- 13. Reveal on scroll */
+  function initReveal() {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    if (!items.length) return;
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (item) { item.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    items.forEach(function (item) { observer.observe(item); });
+  }
+
+  /* ------------------------------------------- 14. Process step highlight */
+  function initProcessHighlight() {
+    var steps = Array.prototype.slice.call(document.querySelectorAll('.process-step'));
+    if (!steps.length) return;
+    if (!('IntersectionObserver' in window)) {
+      steps.forEach(function (step) { step.classList.add('is-active'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('is-active', entry.isIntersecting);
+      });
+    }, { rootMargin: '-25% 0px -45% 0px' });
+    steps.forEach(function (step) { observer.observe(step); });
+  }
+
+  /* ------------------------------------------------------ 15. Footer year */
+  function initFooterYear() {
+    var year = document.getElementById('footerYear');
+    if (year) year.textContent = String(new Date().getFullYear());
+  }
+
+  /* ------------------------------------------------------------- Bootstrap */
+  function init() {
+    var initializers = [
+      initNavigation, initMobileMenu, initHeroScroll, initGrowthModel, initPortfolio,
+      initFaq, initDialogs, initContactChannels, initContactForm, initPlans,
+      initBackToTop, initReveal, initProcessHighlight, initFooterYear
+    ];
+    initializers.forEach(function (initializer) {
+      try {
+        initializer();
+      } catch (error) {
+        /* یک بخش اختیاری نباید بقیه سایت را از کار بیندازد */
+        if (window.console && window.console.error) window.console.error('AVESTORA init:', error);
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+</body>
+</html>
